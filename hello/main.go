@@ -65,10 +65,8 @@ func main() {
 	switch value {
 	case 9:
 		fmt.Println("Nine")
-		break
 	case 10:
 		fmt.Println("Ten")
-		break
 	default:
 		fmt.Println("Unknown Number")
 	}

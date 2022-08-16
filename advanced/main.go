@@ -48,6 +48,24 @@ type Person struct {
 	Name string
 }
 
+type Android struct {
+	Person //embeded type
+	Model  string
+}
+
+type Shape interface {
+	area() float64
+}
+
+func totalArea(shapes ...Shape) float64 {
+	var area float64
+	for _, s := range shapes {
+		area += s.area()
+	}
+
+	return area
+}
+
 func (p *Person) Talk() {
 	fmt.Println("Hi my name is " + p.Name)
 }
@@ -74,5 +92,10 @@ func main() {
 
 	person := Person{Name: "이용림"}
 	fmt.Println(person.Name)
-	fmt.Println(person.Talk())
+	person.Talk()
+
+	android := new(Android)
+	android.Name = "안드로이드"
+	android.Talk()
+
 }
