@@ -1,11 +1,13 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	m "go/package/lib"
 	"io"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -82,5 +84,14 @@ func main() {
 	for _, fi := range fileInfos {
 		fmt.Println(fi.Name())
 	}
+
+	//Define flags
+	maxp := flag.Int("max", 6, "the max value")
+
+	//parse
+	flag.Parse()
+
+	//Generate a number between 0 and max
+	fmt.Println(rand.Intn(*maxp))
 
 }
