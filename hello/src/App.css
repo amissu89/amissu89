@@ -11,6 +11,11 @@ body{
   font-family:system-ui;
 }
 
+div{
+  box-sizing: border-box;
+}
+
+
 .black-nav{
   background:black;
   width:100%;
@@ -20,6 +25,14 @@ body{
   font-weight:600;
   font-size:20px;
 }
+
+.list{
+  padding-left:20px;
+  text-align:left;
+  border-bottom : 1px solid grey;
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
