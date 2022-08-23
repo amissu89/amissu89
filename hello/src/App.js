@@ -38,49 +38,50 @@ function App() {
 
   // })
 
-  let str ="글1";
-
-  let blueStyle = {
-    color : 'blue'
-  };
-  
-  function foo(){
-    return 100;
-  }
-
   let today = new Date();
 
   //destructuring 문법
   //state로 설정하면 자동으로 html이 재렌더링됨
   //자주 변경될 것 같은 html은 state로 만들기
-  let [a, b] = useState('헬로우');
   let [title, changeTitle] 
     = useState(['남자 코트 추천', '강남 우동 맛집', '파이썬 독학']);
-  let [like, increaseLike] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
-  let [modalTitle, setModalTitle] = useState(title[0]);
+
   let [inputStr, setInputStr] = useState('');
 
-  let [dates, setDate] = useState([today.toLocaleString(), today.toLocaleString(),today.toLocaleString()])
- 
-  let date = "2월 17일 발행";
+  let [posts, setPost] = useState([{
+    title : "남자 코트 추천",
+    like : 0,
+    date : today.toLocaleString()
+  }, 
+  {
+    title : "강남 우동 맛집",
+    like : 0,
+    date : today.toLocaleString()
+  },
+  {
+    title : "파이썬 독학",
+    like : 0,
+    date : today.toLocaleString()
+  },])
+  let [modalTitle, setModalTitle] = useState(posts[0].title);
 
   function btnLike(idx){
-     let copy = [...like];
-     copy[idx] = copy[idx] +1;
-     increaseLike(copy);
+    let copy = [...posts];
+    copy[idx].like = copy[idx].like +1;
+    setPost(copy);
   }
 
   function chTitle(){
-    let copy = [...title];
-    copy[0] = "여자 코트 추천";
-    changeTitle(copy);
+    let copy = [...posts];
+    copy[0].title = "여자 코트 추천";
+    setPost(copy);
   }
 
   function deletePosting(idx){
-    let copy = [...title];
+    let copy = [...posts];
     copy.splice(idx, 1);
-    changeTitle(copy);
+    setPost(copy);
   }
 
   return (
@@ -94,19 +95,20 @@ function App() {
       {/* <img src ={logo} alt="img"/> */}
      
       {
-        title.map(function(name, idx){
-            return (
+        posts.map(function(post, idx){
+          console.log(post);
+          return (
               <div className="list" key={idx}>
               <h4 onClick={()=>{
                 setModal(!modal);
-                setModalTitle(name);
+                setModalTitle(post.title);
               }}> 
-                {name} 
+                {post.title} 
                 {/* e.stopPropagation() : 상위 html로 이벤트 버블링 막고 싶은 경우 */}
                 <span type="button" onClick={(e) => {e.stopPropagation(); btnLike(idx)}}>👍</span> 
-                {like[idx]} 
+                {post.like} 
               </h4>
-              <p>{dates[idx]}</p>
+              <p>{post.date}</p>
               <button onClick={() => deletePosting(idx)}>삭제</button>
             </div>
             )
@@ -121,18 +123,15 @@ function App() {
         if(inputStr === "")
           return;
 
-        let copy=[...title];
-        copy.unshift(inputStr)
-        changeTitle(copy);
-        
-        //따봉도 하나 더 추가
-        let copy2 = [...like];
-        copy2.unshift(0);
-        increaseLike(copy2);
-
-        let copy3 = [...dates];
-        copy3.unshift(today.toLocaleString());
-        setDate(copy3);
+        let copy = [...posts];
+        let obj = {
+          title : inputStr,
+          like : 0,
+          date : today.toLocaleString()
+        }
+        copy.unshift(obj);
+        setPost(copy);
+        console.log(copy)
       }}>추가</button>
 
       {/* 컴포넌트 만드는 법
@@ -151,17 +150,17 @@ function App() {
           () =>{
             //...괄호를 벗겨주세요
             ///[] 괄호를 새로 만들어 주세요.
-            let copy = [...title];
-            copy[0] = "여자 코트 추천";
-            changeTitle(copy);
+            let copy = [...posts];
+            copy[0].title = "여자 코트 추천";
+            setPost(copy);
           }
         }>이름 변경</button>
 
         <button onClick={
           () =>{
-            let copy = [...title];
-            
-            changeTitle(copy.sort());
+            let copy = [...posts];
+            let result = copy.sort((a,b) => a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1);
+            setPost(result);
           }
         }>정렬</button>
     </div>

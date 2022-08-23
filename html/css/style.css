@@ -1,6 +1,36 @@
-p{
-    text-align: center;
+body{
+    margin: 0px;
 }
+
+div, input, textarea{
+    /* 박스의폭이 border까지 포함임  */
+    box-sizing: border-box;
+}
+table{
+    border-collapse: collapse;
+    border-style: hidden;
+    border-radius: 10px;
+    background-color: beige;
+    box-shadow: 0 0 0 1px #000;
+}
+td, th{
+    vertical-align: middle;
+    border-radius: 10px;
+    padding:10px;
+}
+
+tr{
+    border : 1px solid cornflowerblue;
+}
+
+
+/* input[type=text], input[type=email]{
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid burlywood;
+    border-radius: 5px;
+} */
+
 
 .profileImg{
     width:100px; 
@@ -117,4 +147,240 @@ html에서 style 속성 1000점*/
 
 .navbar a:visited{
     color: black;
+}
+
+.main-background{
+    width:100%;
+    height: 600px;
+    background-image: url("../res/img/background.jpg");
+    /* 배경 짤려도 상관없으니까 */
+    background-size: cover; 
+    background-repeat:no-repeat;
+    background-position: center;
+    filter:brightness(80%) saturate(70%);
+    /* margin collapse effect. 테두리가 안 붙게 하면 의도대로 동작함 */
+    padding:20px; 
+    position: relative;
+}
+
+.main-title{
+    color:white;
+    font-size: 40px;
+    margin-top: 150px;
+}
+
+.main-content{
+    color: white;
+    font-size:30px;
+    text-align: left;
+}
+
+.main-btn{
+    width:150px;
+    height:60px;
+    padding:15px;
+    font-size:15px;
+    font-weight:bold;
+    background-color: bisque;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border: none;
+    /* 내 원래 위치를 기준으로 이동해주세요. 기준점 잡는 속성임
+    공중에 뜨게됨
+    fixed는 현재 viewport 기준으로 이동함. 스크롤해도 계속 고정되는 버튼 등 만들때 사용
+    absolute는 내 부모 태그가 기준. 부모태그중에 relative 가진 부모 기준
+    부모태그에 relative주고, 자식태그에서 absolute를 주면 부모박스에 종속된 고정된 버튼 사용 가능
+    absolute일 경우 가운데 정렬 , left:0, right:0, margin:auto */
+    position: absolute;
+    bottom : 180px;
+    left : 0;
+    right:0; 
+}
+
+.second-box{
+    /*박스의 진짜 크기가 아니라 content 영역의 너비임*/
+    width:80%;
+    /* pc에서 너무 커질수 있어서 최대치를 정해줌 */
+    max-width: 600px;
+    height:200px;
+    background-color: gray;
+    position: relative;
+    top : -100px;
+    left : 0;
+    right:0; 
+    margin: auto;
+    text-align: center;
+    padding:30px;
+}
+
+.contact{
+    padding:30px;
+    width:40%;
+    height:600px;
+    background-color:antiquewhite;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact input[type=text]{
+    width:90%;
+}
+
+.name-field div{
+    float:left;
+}
+.name-field input{
+    width:85%;
+}
+
+
+.form-background{
+    background-color: black;
+    padding: 30px;
+    height:800px;
+}
+
+.form-white{
+    background-color: white;
+    padding: 30px;
+    width: 80%;
+    height:80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-input{
+    width: 100%;
+    padding: 0px;
+    font-size:20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid burlywood;
+    border-radius: 5px;
+}
+
+.w-100{
+    padding: 10px;
+}
+
+.w-50{
+    width:50%;
+    float:left;
+    padding:10px;
+}
+
+.w-30{
+    width:30%;
+    float:left;
+    padding:10px;
+}
+
+
+.w-70{
+    width:70%;
+    float:left;
+    padding:10px;
+}
+
+.send-section{
+    clear:both; /*float 다음에 오는 요소에 주면 float로 발생하는 이상한 현상 해결 가능 */
+    float: none;
+    position: relative;
+    margin-top: 30px;
+}
+
+.send-section input{
+    position: absolute;
+    left: 4px;
+}
+
+.send-section label{
+    position: absolute;
+    left: 30px;
+}
+
+.send-section button{
+    position: absolute;
+    right:35px;
+    color:white;
+    background-color:darkorange;
+    border: none;
+    font-size:20px;
+    border-radius: 5px;
+    width:100px;
+    height: 30px;
+}
+
+.cart { 
+    width:100%;
+    height:800px;
+    margin-left: auto;
+    margin-right:auto;
+    background-color:cornflowerblue;
+    padding:30px;
+}
+
+.cart h1{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.cart-table{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:whitesmoke;
+    color : cornflowerblue;
+}
+
+.cart-table tfoot td{
+    text-align: right;
+}
+
+footer{
+    margin-top: 30px;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.cart-btn{
+    float:right;
+    width:300px;
+    height: 60px;
+    font-size:20px;
+    background-color:navy;
+    color:white;
+    border-radius: 5px;
+    border:none;
+    cursor:pointer;
+}
+
+.cart-btn:hover {
+    background-color:aquamarine;
+}
+.cart-btn:focus{
+    background-color: orange;
+}
+.cart-btn:active{
+    background-color:blue;
+}
+
+.cart-link{
+    font-size:15px;
+    text-decoration: none;
+
+}
+
+.cart-link:link{
+    color:black;
+}
+
+.cart-link:visited{
+    color:black;
 }
