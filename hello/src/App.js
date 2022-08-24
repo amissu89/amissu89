@@ -65,6 +65,7 @@ function App() {
     date : today.toLocaleString()
   },])
   let [modalTitle, setModalTitle] = useState(posts[0].title);
+  let [modalData, setModalData] = useState(posts[0]);
 
   function btnLike(idx){
     let copy = [...posts];
@@ -102,6 +103,7 @@ function App() {
               <h4 onClick={()=>{
                 setModal(!modal);
                 setModalTitle(post.title);
+                setModalData(post);
               }}> 
                 {post.title} 
                 {/* e.stopPropagation() : 상위 html로 이벤트 버블링 막고 싶은 경우 */}
@@ -141,7 +143,7 @@ function App() {
       
       {/* 중괄호 안에 for, if 사용 안됨 */}
       {
-          modal ? <Modal title={modalTitle} color={'lightyellow'} info={title} func={chTitle}></Modal> : null
+          modal ? <Modal title={modalTitle} data={modalData} color={'lightyellow'} info={title} func={chTitle}></Modal> : null
       }
       <ImgViewer/>
       <Modal3></Modal3>
@@ -180,8 +182,8 @@ function Modal(props){
     //컴포넌트의 단점 : state를 가져다쓸 때 문제 생김
     //A 함수에 있던 변수는 B함수에서 맘대로 가져다 쓸수 없음
     <div className="modal" style={{background: props.color}}>
-        <h4>{props.title}</h4>
-        <p>날짜</p>
+        <h4>{props.data.title}</h4>
+        <p>날짜 : {props.data.date} </p>
         <p>상세내용</p>
         <button onClick={()=> props.func()} >글수정</button>
     </div>
