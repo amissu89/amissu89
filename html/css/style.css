@@ -1,5 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+/* 내가 준비한 폰트파일을 css에 등록하는 방법 */
+@font-face{
+    font-family: 'nanum-r';
+    src : url(../res/font/NanumSquareR.woff);
+}
+
+@font-face{
+    font-family: 'nanum-b';
+    src : url(../res/font/NanumSquareB.woff);
+}
+
 body{
     margin: 0px;
+    /* 처음 폰트가 설치안되있으면 두번째 없으면 세번째 폰트 적용 */
+    font-family: 'Nanum Myeongjo' 'nanum', 'dotum', 'arial';
+    
+}
+
+p, h4, h3, h2, h1, span{
+    /* 살짝 회전하면 폰트부드러워짐. 윈도우에서 효과 좋음 */
+    transform: rotate(0.03deg);
 }
 
 div, input, textarea{
@@ -383,4 +404,33 @@ footer{
 
 .cart-link:visited{
     color:black;
+}
+
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    /* 모바일, pc 버전의 반응형 짤때 유용함 */
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    align-items: center;
+}
+
+.flex-item{
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    padding:10px;
+}
+
+/* Logo */
+.flex-item:nth-child(1){
+    flex-grow: 0.5;
+    padding-left:30px;
+
+}
+
+.flex-item:nth-child(3), .flex-item:nth-child(4){
+    flex-grow: 0.2;
+    text-align: center;
 }
