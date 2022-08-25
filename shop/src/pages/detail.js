@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 import detailStyle from './detail.module.css';
 import { useEffect, useState } from 'react';
@@ -26,6 +26,7 @@ function DetailItem(props) {
     let [show, setShow] = useState(true);
     let [show2, setShow2] = useState(false);
     let [text, setText] = useState("");
+    let [tab, setTab] = useState(0);
 
     /**
      * 쓰는 이유
@@ -90,7 +91,7 @@ function DetailItem(props) {
             <Container>
                 <Row>
                     <Col>
-                        <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+                        <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" alt='show shoe' />
                     </Col>
                     <Col>
                         <h4 className="pt-5">{obj.title}</h4>
@@ -104,9 +105,33 @@ function DetailItem(props) {
                     </Col>
                 </Row>
             </Container>
+
+            <Nav variant="tabs" defaultActiveKey="tab1">
+                <Nav.Item>
+                    <Nav.Link eventKey="tab0" onClick={() => {setTab(0)}}>버튼0</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="tab1" onClick={() => {setTab(1)}}>버튼1</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="tab2" onClick={() => {setTab(2)}}>버튼2</Nav.Link>
+                </Nav.Item>
+            </Nav>
+
+            <TabContent tab={tab}/>
         </>
 
     )
+}
+
+function TabContent(props){
+    if(props.tab === 0){
+        return (<div>내용 0</div>)
+    } else if(props.tab === 1){
+        return (<div>내용 1</div>)
+    } else if(props.tab === 2){
+        return (<div>내용 2</div>)
+    }
 }
 
 function getItemById(items, id) {
