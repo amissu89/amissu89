@@ -7,12 +7,15 @@ import Col from 'react-bootstrap/Col';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import DetailItem from './pages/detail.js';
+import axios from 'axios';
 
 import './App.css';
 
 function App() {
 
   let [shoes, setShoes] = useState(data);
+  let [count, setCount] = useState(2);
+  let [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
   return (
@@ -35,6 +38,9 @@ function App() {
         <Route path="/" element={
           <>
             <div className="main-bg"></div>
+            {
+                loading ? <div className="alert alert-warning"> 로딩중입니다. </div> : null
+            }
             <Container>
               <Row>
                 {
@@ -50,6 +56,36 @@ function App() {
                 }
               </Row>
             </Container>
+            
+            {
+              count > 3 ?  null : <button onClick={() => {
+                setLoading(true);
+                axios.get(`https://codingapple1.github.io/shop/data${count}.json`)
+                .then( (res) => {
+                  
+                  let copy = [...shoes, ...res.data];
+                  setShoes(copy);
+                  setCount(count+1);
+                  setLoading(false);
+
+                  //axios.post('url', {name : 'aaa'})
+
+                  //두개 모두 다 성공했을 경우에 then이 실행됨. 
+                  // Promise.all([axios.get('/url1'), axios.get('url2')])
+                  // .then( () => {
+
+                  // });
+
+                }).catch(()=>{
+                  setLoading(false);
+                })
+
+                // fetch('url') //가능한데 json을 array나 object로 변환하는 과정이 필요함
+                // .then( res => {res.json()})
+                // .then( data => {})
+              }}>더보기</button> 
+            }
+            
           </>
         } />
         <Route path="/detail/:id" element={<DetailItem shoes={shoes}/>} />
