@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 import detailStyle from './detail.module.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import {Context1} from '../App.js' 
 
 let Btn = styled.button`
     background: ${props => props.bg};
@@ -21,13 +22,16 @@ function DetailItem(props) {
 
     let { id } = useParams();
     let obj = getItemById(props.shoes, parseInt(id));
+    let shoes = props.shoes;
 
     let [count, setCount] = useState(0);
     let [show, setShow] = useState(true);
     let [show2, setShow2] = useState(false);
     let [text, setText] = useState("");
     let [tab, setTab] = useState(0);
+    let [fade, setFade] = useState('');
 
+ 
     /**
      * 쓰는 이유
      * 1. html이 렌더링이 되고 나서 useEffect가 동작함.
@@ -40,12 +44,14 @@ function DetailItem(props) {
     useEffect(() => {
         //mount, update시 실행 (렌더링, 재렌더링 될 때)
         let timer = setTimeout(() => { setShow(false) }, 2000);
+        let timer2 = setTimeout(() => { setFade('end') }, 10);
         return () => {
             //clean up function이라고함. 
             //unmount될 때 실행됨. 컴포넌트 삭제된 경우. 페이지 이동했을 때. 
             //useEffect가 되기전에 실행됨.
             //기존 타이머는 제거해주셈. 기존 코드 치우는거 여기에 많이 작성
             clearTimeout(timer);
+            clearTimeout(timer2);
             /**
              * 만약 서버로 데이터 요청하는 코드가 있었다면. 
              * 재렌더링 할 때마다 계속 데이터 요청을 시도할 것. 
@@ -57,11 +63,7 @@ function DetailItem(props) {
     //[] dependency가 비어있으면 
 
     useEffect(() => {
-        if (isNaN(text) == true) {
-            setShow2(true);
-        }
-        else
-            setShow2(false);
+        setShow2(isNaN(text));
     })
     /**
      * 1. useEffect (()=>{  }) 재 렌더링마다 코드 실행하고 싶으면
@@ -74,7 +76,7 @@ function DetailItem(props) {
      */
 
     return (
-        <>
+        <div className={`start ${fade}`}>
             {
                 show ? <div className="alert alert-warning"> 2초 이내 구매시 할인 </div> : null
             }
@@ -108,30 +110,44 @@ function DetailItem(props) {
 
             <Nav variant="tabs" defaultActiveKey="tab1">
                 <Nav.Item>
-                    <Nav.Link eventKey="tab0" onClick={() => {setTab(0)}}>버튼0</Nav.Link>
+                    <Nav.Link eventKey="tab0" onClick={() => { setTab(0) }}>버튼0</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="tab1" onClick={() => {setTab(1)}}>버튼1</Nav.Link>
+                    <Nav.Link eventKey="tab1" onClick={() => { setTab(1) }}>버튼1</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="tab2" onClick={() => {setTab(2)}}>버튼2</Nav.Link>
+                    <Nav.Link eventKey="tab2" onClick={() => { setTab(2) }}>버튼2</Nav.Link>
                 </Nav.Item>
             </Nav>
 
-            <TabContent tab={tab}/>
-        </>
+            <TabContent tab={tab} shoes={shoes}/>
+        </div>
 
     )
 }
 
-function TabContent(props){
-    if(props.tab === 0){
-        return (<div>내용 0</div>)
-    } else if(props.tab === 1){
-        return (<div>내용 1</div>)
-    } else if(props.tab === 2){
-        return (<div>내용 2</div>)
-    }
+function TabContent({ tab, shoes }) {
+    //tab state가 변경될 때마다 실행되게함
+    let [fade, setFade] = useState('');
+    
+    //보관함을 해체함
+    let {deposit} = useContext(Context1); //{} destructing 문법
+    useEffect(() => {
+        //리액트의 automatic batching 기능. 
+        //state 변경하는 함수가 근처에 있으면 그걸 합쳐서 한번에 처리하려고함. 
+        let timer = setTimeout(() => { setFade('end') }, 100);
+
+        return () => {
+            setFade('');
+            clearTimeout(timer);
+        }
+    }, [tab]);
+
+    return (
+        <div className={`start ${fade}`}>
+            {[<div>{deposit[0]}</div>, <div>{deposit[1]}내용 1</div>, <div>{deposit[2]}내용 2</div>][tab]}
+        </div>
+    )
 }
 
 function getItemById(items, id) {

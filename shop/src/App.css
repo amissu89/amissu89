@@ -47,3 +47,20 @@
 .font-white {
   color:white;
 }
+
+/*
+전환 애니메이션 만들기
+1. 애니메이션 동작 전 class 만들기
+2. 애니메이션 동작 후 스타일을 class 만들기
+3. class에 transition 속성 추가
+4. 원할 때 2번 추가 
+*/
+
+.start{
+  opacity: 0;
+}
+
+.end{
+  opacity: 1;
+  transition : opacity 0.5s;
+}
