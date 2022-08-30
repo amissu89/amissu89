@@ -61,22 +61,37 @@
     </div>
 
     <span class="badge bg-dark" id="mode">Dark</span>
+    <div class="alert alert-danger"></div>
 
     <p>태조 이성계가 태어난 년도는?</p>
     <input type="text" id="answer">
     <button id="send-answer">제출</button>
 
     <script>
+        // setTimeout(function () {
+        //     document.querySelector('.alert-danger').style.display = 'none'
+        // }, 3000)
+
+        // let alertCount = 5;
+        // setInterval(function(){
+        //     if(alertCount > 0){
+        //         let str = `${alertCount}초 안에 구매하시면 사은품 증정`
+        //         document.querySelector('.alert-danger').innerHTML = str
+        //         alertCount--
+        //     }
+        //     else {
+        //         document.querySelector('.alert-danger').style.display = 'none'
+        //     }
+        // }, 1000)
         let aCount = 0
-        document.getElementById('send-answer').addEventListener('click', function(){
+        document.getElementById('send-answer').addEventListener('click', function () {
             let str = document.getElementById('answer').value
             console.log(str)
-            if( str === '1335')
+            if (str === '1335')
                 alert('성공')
             else {
                 aCount++;
-                if(aCount >= 3)
-                {
+                if (aCount >= 3) {
                     alert('멍청아')
                 }
             }
@@ -112,6 +127,16 @@
             if (pw.length < 6) {
                 e.preventDefault(); //폼 전송 막는 법
                 alert('비밀번호는 6자 이상이어야 합니다')
+            }
+
+            if(/\S+@\S+\.\S+/.test(id) == false){
+                e.preventDefault();
+                alert('이메일 형식 아님')
+            }
+
+            if(/[A-Z]/.test(pw) == false){
+                e.preventDefault();
+                alert('최소한 대문자 하나 포함되어야함')
             }
         })
 
