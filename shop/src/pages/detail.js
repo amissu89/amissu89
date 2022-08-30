@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import detailStyle from './detail.module.css';
 import { useContext, useEffect, useState } from 'react';
 import {Context1} from '../App.js' 
+import { useDispatch } from 'react-redux';
+import { addItem } from '../store/boughtItem.js';
+
 
 let Btn = styled.button`
     background: ${props => props.bg};
@@ -30,6 +33,8 @@ function DetailItem(props) {
     let [text, setText] = useState("");
     let [tab, setTab] = useState(0);
     let [fade, setFade] = useState('');
+
+    let dispatch = useDispatch()
 
  
     /**
@@ -99,7 +104,10 @@ function DetailItem(props) {
                         <h4 className="pt-5">{obj.title}</h4>
                         <p>{obj.content}</p>
                         <p>{obj.price}</p>
-                        <button className="btn btn-danger">주문하기</button>
+                        <button className="btn btn-danger"
+                        onClick={ () => {
+                            dispatch(addItem({id : 3, name : obj.title, count : 1, }));
+                        }}>주문하기</button>
                         <Btn bg="blue" onClick={() => setCount(count + 1)}>버튼트튼</Btn>
                         <div className={detailStyle.box}>
                             <button className={detailStyle.yellowBtn}>{count}</button>

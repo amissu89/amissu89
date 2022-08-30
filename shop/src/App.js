@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import DetailItem from './pages/Detail.js';
+import Cart from './pages/Cart.js';
 import axios from 'axios';
 
 import './App.css';
@@ -49,7 +50,7 @@ function App() {
                 {
                   shoes.map(function (shoe, idx) {
                     return (
-                      <Item
+                      <Item key={idx}
                         data={shoe}
                         src={`https://codingapple1.github.io/shop/shoes${(idx + 1)}.jpg`}
                         alt={`shoes${(idx + 1)}`}>
@@ -98,11 +99,8 @@ function App() {
         }
         />
 
-        <Route path="/cart" >
+        <Route path="/cart" element={<Cart/>}/>
           
-        </Route>
-
-
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버에 대해서</div>} />
           <Route path="location" element={<div>오시는 길</div>} />
