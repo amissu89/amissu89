@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>js-basic</title>
+</head>
+
+<body>
+    <div class="black-bg">
+        <div class="white-bg">
+            <h4>로그인하세요</h4>
+            <form action="success.html">
+                <div class="my-3">
+                    <input type="text" id="id" name="id" class="form-control">
+                </div>
+                <div class="my-3">
+                    <input type="password" id="pw" name="pw" class="form-control">
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary">전송</button>
+                <button type="button" class="btn btn-danger" id="close">닫기</button>
+            </form>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">Navbar</span>
+            <button class="navbar-toggler" type="button" id="menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <div class="main-bg">
+        <h4>Shirts on sale</h4>
+        <button id='login-btn' type="button" class="btn btn-primary">로그인</button>
+    </div>
+
+    <script>
+        //css select하는 것 처럼
+
+        document.querySelector('#menu').addEventListener('click', function () {
+            document.querySelectorAll('.list-group')[0].classList.toggle('show')
+        })
+
+
+        document.querySelector('#login-btn').addEventListener('click', function () {
+            document.querySelector('.black-bg').classList.add('show-modal')
+        })
+
+        document.querySelector('#close').addEventListener('click', function(){
+            document.querySelector('.black-bg').classList.remove('show-modal')
+        })
+
+        document.querySelector('#submit').addEventListener('click', function(e){
+            let id = document.querySelector('#id').value
+            let pw = document.querySelector('#pw').value
+            if(id === '' || pw === ''){
+                e.preventDefault(); //폼 전송 막는 법
+                alert('아이디 또는 비밀번호를 입력하세요')
+            }
+
+            if(pw.length < 6){
+                e.preventDefault(); //폼 전송 막는 법
+                alert('비밀번호는 6자 이상이어야 합니다')
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>
