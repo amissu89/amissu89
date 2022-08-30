@@ -21,7 +21,7 @@
     <title>js-basic</title>
 </head>
 
-<body>
+<body class='dark'>
     <div class="black-bg">
         <div class="white-bg">
             <h4>로그인하세요</h4>
@@ -60,8 +60,32 @@
         <button id='login-btn' type="button" class="btn btn-primary">로그인</button>
     </div>
 
+    <span class="badge bg-dark" id="mode">Dark</span>
+
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer">
+    <button id="send-answer">제출</button>
+
     <script>
-        //css select하는 것 처럼
+        let aCount = 0
+        document.getElementById('send-answer').addEventListener('click', function(){
+            let str = document.getElementById('answer').value
+            console.log(str)
+            if( str === '1335')
+                alert('성공')
+            else {
+                aCount++;
+                if(aCount >= 3)
+                {
+                    alert('멍청아')
+                }
+            }
+        })
+    </script>
+
+    <script>
+
+
 
         document.querySelector('#menu').addEventListener('click', function () {
             document.querySelectorAll('.list-group')[0].classList.toggle('show')
@@ -72,23 +96,44 @@
             document.querySelector('.black-bg').classList.add('show-modal')
         })
 
-        document.querySelector('#close').addEventListener('click', function(){
+        document.querySelector('#close').addEventListener('click', function () {
             document.querySelector('.black-bg').classList.remove('show-modal')
         })
 
-        document.querySelector('#submit').addEventListener('click', function(e){
+        document.querySelector('#submit').addEventListener('click', function (e) {
             let id = document.querySelector('#id').value
             let pw = document.querySelector('#pw').value
-            if(id === '' || pw === ''){
+            if (id === '' || pw === '') {
                 e.preventDefault(); //폼 전송 막는 법
                 alert('아이디 또는 비밀번호를 입력하세요')
+                return
             }
 
-            if(pw.length < 6){
+            if (pw.length < 6) {
                 e.preventDefault(); //폼 전송 막는 법
                 alert('비밀번호는 6자 이상이어야 합니다')
             }
+        })
 
+        //input은 입력값이 바뀔때마다 동작
+        //change는 입력값이 바뀐후, 다른 곳으로 포커스가 가면 동작
+        document.getElementById('id').addEventListener('input', function () {
+            console.log('hellllo')
+        })
+
+        let count = 0
+
+        document.getElementById('mode').addEventListener('click', function () {
+            count++;
+            let element = document.getElementById('mode');
+            if (count % 2 == 0) {
+                element.style.color = 'white'
+                element.innerHTML = 'dark'
+            }
+            else {
+                element.style.color = 'yellow'
+                element.innerHTML = 'light'
+            }
         })
 
 
