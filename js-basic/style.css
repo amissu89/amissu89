@@ -1,6 +1,24 @@
-.dark{
-    background : black;
-    color : white;
+/*
+부트스트랩 사용시, 스크롤 이벤트들이 smooth하게 이동함
+이를 리셋하고자한다면 아래 명령어 작성*/
+:root {
+    scroll-behavior: auto;
+}
+
+.dark {
+    background: black;
+    color: white;
+}
+
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+.navbar-brand {
+    font-size: 30px;
 }
 
 .alert-box {
@@ -32,7 +50,8 @@
     padding: 30px;
     visibility: hidden;
     opacity: 0;
-    transition: all 1s; /*뭐라도 변할 때 1초 동안 천천히 변해라*/
+    transition: all 1s;
+    /*뭐라도 변할 때 1초 동안 천천히 변해라*/
 }
 
 .white-bg {
@@ -41,7 +60,7 @@
     padding: 30px;
 }
 
-.main-bg{
+.main-bg {
     padding: 100px 20px;
     background: lightgray;
 }
@@ -52,11 +71,68 @@
 3. 원할 때 최종 스타일로 변하라고 코드짬
 4. transition 추가 */
 
-.show {
-    display: block;
-}
 
 .show-modal {
     visibility: visible;
     opacity: 1;
+}
+
+.slide-container {
+    width: 300vw;
+    transition: all 1s;
+}
+
+.sliding {
+    transform: translateX(-100vw);
+}
+
+.slide-box {
+    width: 100vw;
+    float: left;
+}
+
+.slide-box img {
+    width: 100%;
+}
+
+ul.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+ul.list::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.tab-button {
+    display: block;
+    padding: 10px 20px 10px 20px;
+    float: left;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    color: grey;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.orange {
+    border-top: 2px solid orange;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid white;
+    border-left: 1px solid #ccc;
+    color: black;
+    margin-top: -2px;
+}
+
+.tab-content {
+    display: none;
+    padding: 10px;
+}
+
+.show {
+    display: block;
 }

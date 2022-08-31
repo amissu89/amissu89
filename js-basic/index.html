@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    
     <title>js-basic</title>
 </head>
 
@@ -27,10 +27,10 @@
             <h4>로그인하세요</h4>
             <form action="success.html">
                 <div class="my-3">
-                    <input type="text" id="id" name="id" class="form-control">
+                    <input type="text" id="id" name="id" class="form-control" value="abc@abc.com">
                 </div>
                 <div class="my-3">
-                    <input type="password" id="pw" name="pw" class="form-control">
+                    <input type="password" id="pw" name="pw" class="form-control" value="123456">
                 </div>
                 <button id="submit" type="submit" class="btn btn-primary">전송</button>
                 <button type="button" class="btn btn-danger" id="close">닫기</button>
@@ -46,6 +46,8 @@
             </button>
         </div>
     </nav>
+
+
 
     <ul class="list-group">
         <li class="list-group-item">An item</li>
@@ -67,6 +69,69 @@
     <input type="text" id="answer">
     <button id="send-answer">제출</button>
 
+    <div style="overflow:hidden">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="./car1.png" alt="car1" srcset="">
+            </div>
+            <div class="slide-box">
+                <img src="./car2.png" alt="car1" srcset="">
+            </div>
+            <div class="slide-box">
+                <img src="./car3.png" alt="car1" srcset="">
+            </div>
+        </div>
+    </div>
+
+    <button class="slide-0">prev</button>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="slide-4">next</button>
+
+    <div class='lorem' style="width:200px; height:100px; overflow-y:scroll;">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod enim cumque corrupti? Illum modi et eum cum
+        ratione asperiores sed doloribus, voluptatibus similique numquam voluptates cupiditate sint? Delectus, sequi
+        harum!
+    </div>
+
+    <div style="height:1000px"></div>
+    <script>
+        //scroll 끝까지 내렸나 안내렸나 체크하는 방법
+        document.querySelector('.lorem').addEventListener('scroll', function () {
+            //div 스크롤바 내린 양 + 눈에 보이는 div의 높이 == div의 실제 높이
+            let scrollTop = document.querySelector('.lorem').scrollTop //div 위에서 스롤바 내린 높이 
+            let height = document.querySelector('.lorem').scrollHeight //div 스크롤 실제 높이
+            let cHeight = document.querySelector('.lorem').clientHeight
+            console.log(scrollTop + cHeight)
+            console.log(height)
+            if (Math.abs(scrollTop + cHeight - height) < 1) {
+                alert('회원 약관을 다 읽으셨군요')
+            }
+
+        })
+
+        window.addEventListener('scroll', function () {
+
+            if (window.scrollY > 200) {
+                document.querySelector('.navbar-brand').style.fontSize = '20px'
+            }
+            else {
+
+                document.querySelector('.navbar-brand').style.fontSize = '30px'
+            }
+            //window.scrollTo(0, 1000) 
+            //scrollBy() 현재위치로부터 스크롤하기
+        })
+
+        /*
+        현재 페이지 끝까지 갔는지 체크
+        페이지 로드가 완료되어야지, 잘 작동함. body태그 끝나기 직전에 체크하는것으로.
+        document.queryselect('html').scrollHEight
+        document.queryselect('html').clientHeight
+        window.scrolly
+        */
+    </script>
     <script>
         // setTimeout(function () {
         //     document.querySelector('.alert-danger').style.display = 'none'
@@ -99,9 +164,6 @@
     </script>
 
     <script>
-
-
-
         document.querySelector('#menu').addEventListener('click', function () {
             document.querySelectorAll('.list-group')[0].classList.toggle('show')
         })
@@ -129,12 +191,12 @@
                 alert('비밀번호는 6자 이상이어야 합니다')
             }
 
-            if(/\S+@\S+\.\S+/.test(id) == false){
+            if (/\S+@\S+\.\S+/.test(id) == false) {
                 e.preventDefault();
                 alert('이메일 형식 아님')
             }
 
-            if(/[A-Z]/.test(pw) == false){
+            if (/[A-Z]/.test(pw) == false) {
                 e.preventDefault();
                 alert('최소한 대문자 하나 포함되어야함')
             }
@@ -162,7 +224,73 @@
         })
 
 
+        document.querySelector('.slide-1').addEventListener('click', function () {
+            document.querySelector('.slide-container').style.transform = 'translateX(0vw)'
+        })
+
+        document.querySelector('.slide-2').addEventListener('click', function () {
+            document.querySelector('.slide-container').style.transform = 'translateX(-100vw)'
+        })
+
+        document.querySelector('.slide-3').addEventListener('click', function () {
+            document.querySelector('.slide-container').style.transform = 'translateX(-200vw)'
+        })
+
+        let pos = 1
+        let imgCnt = 3
+
+        document.querySelector('.slide-0').addEventListener('click', function () {
+            let tmp = ''
+
+            if (pos == 1) {
+                tmp = `translateX(-${(imgCnt - 1) * 100}vw)`
+                pos = imgCnt;
+            }
+            else {
+                //3일때, 2번 이미지
+                //2일 때, 1번 이미지
+                //1일 때, 3번 이미지
+                tmp = `translateX(${(pos - 1) * 100}vw)`
+                pos--;
+            }
+
+            console.log(`prev : pos : ${pos} tmp : ${tmp}`)
+            document.querySelector('.slide-container').style.transform = tmp
+        })
+
+        document.querySelector('.slide-4').addEventListener('click', function () {
+            let tmp = ''
+
+            if (pos == imgCnt) {
+                tmp = 'translateX(0vw)'
+                pos = 1;
+            }
+            else {
+                tmp = `translateX(-${pos * 100}vw)`
+                pos++;
+            }
+
+            console.log(`next : pos : ${pos} tmp : ${tmp}`)
+            document.querySelector('.slide-container').style.transform = tmp
+        })
+
+
+        function clocker(min, sec) {
+            return min * 60 * 1000 + sec * 1000
+        }
+
+        function discount(price, isFisrt) {
+            let p = price * 0.9
+            if (isFisrt) {
+                p -= 1.5
+            }
+            return p
+        }
+
+
+
     </script>
+    <script src="./index.js"></scripte
 </body>
 
 </html>
