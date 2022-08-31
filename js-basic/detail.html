@@ -22,7 +22,32 @@
 </head>
 
 <body>
+    <div class="container mt-3">
+        <div class="card p-3">
+            <span>상품명</span>
+            <span>가격</span>
+        </div>
+    </div>
     <div class="container mt-5">
+
+        <form class="container my-5 form-group">
+            <p>상품선택</p>
+            <select class="form-select mt-2">
+                <option>모자</option>
+                <option>셔츠</option>
+                <option>바지</option>
+            </select>
+
+            <select class="form-select mt-2 hide">
+                <option>85</option>
+                <option>90</option>
+                <option>95</option>
+                <option>100</option>
+                <option>105</option>
+            </select>
+
+        </form>
+
         <ul class="list">
             <li class="tab-button" data-id="0">Products</li>
             <li class="tab-button orange" data-id="1">Information</li>
@@ -41,6 +66,10 @@
         <div class="tab-content">
             <p>자주 묻는 질문</p>
         </div>
+    </div>
+
+    <div id="test">
+
     </div>
 
     <script src="./detail.js"></script>
