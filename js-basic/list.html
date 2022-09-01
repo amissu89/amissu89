@@ -1,65 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List</title>
 
-      <!-- Bootstrap CSS -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
+
 <body>
-    <div class="card-group container">
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-      </div>
+  <div class="container">
+    <div class="row">
 
-      <script>
-        var products = [
-          { id : 0, price : 70000, title : 'Blossom Dress' },
-          { id : 1, price : 50000, title : 'Springfield Shirt' },
-          { id : 2, price : 60000, title : 'Black Monastery' }
-        ];
+    </div>
+  </div>
 
-        products.forEach( (product, idx) => {
-            document.querySelectorAll('h5')[idx].textContent = product.title
-            document.querySelectorAll('p')[idx].textContent = product.price
-            
-        })
-      </script> 
-      
+  <div class="container">
+    <button class="btn btn-danger" id="more">더보기</button>
+    <button class="btn btn-danger" id="sort">정렬</button>
+    <button class="btn btn-danger" id="name-sort">다나가순 정렬</button>
+    <button class="btn btn-danger" id="filter">6만원 이하 상품보기</button>
+  </div>
+
+  <script>
+
+    localStorage.setItem('이름', 'yllee')
+    console.log(localStorage.getItem('이름'))
+    localStorage.removeItem('이름')
+    let localarr = [1,2,3]
+   
+    localStorage.setItem('array',  JSON.stringify(localarr)) //json 문자열로 만들어줌
+    localStorage.getItem('array') //문자열 '[1,3,4]'으로 나옴
+    let convertarr = JSON.parse(localStorage.getItem('array'))
+    console.log(convertarr)
+    
+    /*
+    응용1. 가나다순 정렬버튼
+    응용2. <input>을 이용해 유저가 직접 가격을 입력해서 필터하는 기능?
+    응용3. 원래 순서대로 되돌리기 버튼과 기능을 만들고 싶으면?
+    */
+    var products = [
+      { id: 0, price: 70000, title: 'Blossom Dress' },
+      { id: 1, price: 50000, title: 'Springfield Shirt' },
+      { id: 2, price: 60000, title: 'Black Monastery' }
+    ];
+
+    makeCard(products, true)
+
+    document.querySelector('#sort').addEventListener('click', () => {
+      products.sort(function (a, b) {
+        return a.price - b.price
+      })
+      makeCard(products, true)
+    })
+
+    document.querySelector('#name-sort').addEventListener('click', () => {
+      products.sort(function (a, b) {
+        return a.title < b.title ? 1 : -1 //내림차순 정렬
+      })
+      makeCard(products, true)
+    })
+    document.querySelector('#filter').addEventListener('click', () => {
+      //가격 필터 같은거 할때
+      let filteredProducts = products.filter(function (item) { //filter 결과는 변수에 저장해서 사용해야함. 원본 변형 X
+        return item.price >= 60000
+      })
+
+      makeCard(filteredProducts, true)
+    })
+
+    let arr = [30, 33, 1, 4, 24]
+    arr.sort(function (a, b) { //오름차순 정렬, 원본 변형
+      /*
+        a,b는 array 안의 자료
+        return 오른쪽이 양수면 a를 오른쪽으로
+        return 오른쪽이 음수면 b를 오른쪽으로
+      */
+      return b - a
+    })
+    console.log(arr)
+
+
+    //가격 필터 같은거 할때
+    let tmp = arr.filter(function (item) { //filter 결과는 변수에 저장해서 사용해야함. 원본 변형 X
+      return item >= 30
+    })
+
+
+    //달러표시 상품을 원화로 변경할때? 쇼핑몰서. 
+    let tmp2 = arr.map(function (item) {
+      return item * 2
+    })
+
+    let arr2 = ['가', '가방', '가위']
+    console.log(arr2.sort()) //문자 역순 정렬 해봐봐
+
+    let moreCnt = 1;
+    document.querySelector('#more').addEventListener('click', function () {
+      fetch(`https://codingapple1.github.io/js/more${moreCnt}.json`)
+        .then(res => res.json())
+        .then(products => {
+          moreCnt++;
+          makeCard(products, false)
+        }
+        ).catch(function (error) {
+          console.log('실패함')
+        });
+    })
+
+    function makeCard(products, clear) {
+      if (clear) {
+        document.querySelector('.row').innerHTML = ''
+      }
+      products.forEach((product, idx) => {
+        let img = document.createElement('img')
+        img.src = 'https://via.placeholder.com/600'
+        img.classList.add('w-100')
+
+        let h5 = document.createElement('h5')
+        h5.textContent = product.title
+
+        let p = document.createElement('p')
+        p.textContent = product.price
+
+        let colsm4 = document.createElement('div')
+        colsm4.classList.add('col-sm-4')
+
+        let button = document.createElement('button')
+        button.textContent = '구매'
+        button.classList.add('buy')
+        colsm4.append(img, h5, p, button)
+
+        document.querySelector('.row').appendChild(colsm4)
+      })
+    }
+
+    // products.forEach((product, idx) => {
+    //   document.querySelectorAll('h5')[idx].textContent = product.title
+    //   document.querySelectorAll('p')[idx].textContent = product.price
+
+    // })
+
+    // $.get('https://codingapple1.github.io/price.json')
+    //   .done(function (data) {
+    //     console.log(data.price)
+    //   }).fail(function (res) {
+    //     console.log(res.status)
+    //     console.log('요청 실패')
+    //   })
+
+    // fetch('https://codingapple1.github.io/price.json')
+    //   .then(res => res.json()) //fetch는 문자로만 주고 받을 수 있음. 그래서 json()으로 뽑아내야함
+    //   .then(function (data) {
+    //     console.log(data)
+    //   })
+    //   .catch(function (error) {
+    //     console.log('실패함')
+    //   });
+
+        // $.post('~', {name:'kim', age : 13})
+        // .done(function(data){
+        //   console.log(data)
+        // })
+  </script>
+
 </body>
+
 </html>
