@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">버튼</button>
+    <script>
+
+        document.getElementById('btn').addEventListener('click', function(e) {
+            //this == e.currentTarget
+            console.log(this)
+            console.log(e.currentTarget) //지금 이벤트 동작하는 곳
+
+            let arr = [1,2,3]
+            arr.forEach((element)=>{ //함수 안에 들어가는 함수를 콜백함수라 한다
+                console.log(element)
+                console.log(this) //일반 함수에서 this를 쓰면 윈도우가 나온다.
+            })
+        })
+        
+        /*machine 쓰면 새로 생성되는 오브젝트를 뜻함. (constructor)
+        */
+        function machine(){
+            this.name = 'yllee' //this : 새로 생성되는 object
+        }
+
+        let m1 = new machine()
+        console.log(m1)
+
+
+        /*
+        함수나 변수를 전역공간에서 만들면 {window}에 보관합니다.
+        */
+        console.log(this) //윈도우가 출력됨
+        /**
+         * 매우 엄격하게 만들어줌
+        'use strict' 
+        */
+        
+        let obj = {
+            data : [1,2,3,3],
+            foo : function(){
+                //메소드 안의 this : 그 함수를 가지고 있는 오브젝트를 뜻함.
+                console.log(this)
+                obj.data.forEach(function(){
+                    console.log(this) //여기서 this는 윈도우
+                })
+            }
+        }
+
+        let obj2 = {
+            data : {
+                foo : function(){
+                    console.log(this)
+                },
+                foo2 : () => {
+                    /*this 값을 함수밖에 있던거 그대로 씀*/
+                    console.log(this)
+                }
+            }
+        }
+        console.log(obj2.data.foo())
+        console.log(obj.foo())
+        function foo(){
+            console.log(this)
+        }
+
+        foo()
+    </script>
+</body>
+</html>
