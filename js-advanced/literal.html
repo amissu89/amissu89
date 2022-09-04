@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+    
+        let arr = ['hello', 'run','world']
+        let arr2 = ['q', 'b', 'c']
+        console.log(arr)
+        console.log(...arr) //array에 붙이면 대괄호를 제거함
+
+        let str = 'hi nice to meet you'
+        console.log(...str) //문자열에 붙이면 펼쳐준다
+
+        console.log([...arr, ...arr2]) //array 합치기 복사 
+                                        //deep copy 할 때 유용
+
+        //해체분석기
+        function foo(strings, var1, var2) {
+            console.log(strings)
+            console.log(var1)
+            console.log(var2)
+            if(var1 === 0){
+                console.log(`바지 안팔아요 양말 ${var2}`)
+                return
+            }
+            console.log(strings[1] + var2+  strings[0] + var1)
+            
+        }
+
+        let pants = 0;
+        let socks = 100;
+        console.log(`바지${pants} 양말${socks}`)
+        
+        foo`바지${pants} 양말${socks}`
+
+
+
+    </script>
+</body>
+
+</html>

@@ -9,7 +9,26 @@
 </head>
 
 <body>
+
+    <div style="display : none">모달창0</div>
+    <div style="display : none">모달창1</div>
+    <div style="display : none">모달창2</div>
+
+    <button>버튼0</button>
+    <button>버튼1</button>
+    <button>버튼2</button>
+
+
     <script>
+
+        let btns = document.querySelectorAll('button')
+        let divs = document.querySelectorAll('div')
+        btns.forEach((btn, idx)=>{
+            btn.addEventListener('click', function(){
+                divs[idx].style.display = 'block'
+            })
+        })
+
         /*
         const 오브젝트 만들었을 때, 내부 값 변경해도 에러는 안남
         */
@@ -24,35 +43,36 @@
         console.log(yllee)
         console.log(window.yllee)
 
-    //    func1()
-    //    function func1(){
-    //        console.log(hi)
-    //        let hi = 'hello'
-    //    }
+        //    func1()
+        //    function func1(){
+        //        console.log(hi)
+        //        let hi = 'hello'
+        //    }
 
-    //    func2()
-    //    var func2 = function(){
-    //     console.log(hi)
-    //        var hi = 'hello'
-    //    }
+        //    func2()
+        //    var func2 = function(){
+        //     console.log(hi)
+        //        var hi = 'hello'
+        //    }
 
-    // let a = 1
-    // var func3 = function() {
-    //     a =2
-    // }
-    // console.log(a)
+        // let a = 1
+        // var func3 = function() {
+        //     a =2
+        // }
+        // console.log(a)
 
-    // let a = 1
-    // var b = 2
-    // window.a = 3
-    // window.b = 4 //windows 전역변수로는 var 타입만 가능
-    // console.log(`a : ${a} , b : ${b}, w.a : ${window.a}, w.b : ${window.b}`)
+        // let a = 1 != window.a , 즉 a를 window a에 재선언한것
+        // var b = 2 == window.b 같은 의미임, 즉 b를 재할당 한 것
+        // window.a = 3
+        // window.b = 4 
+        // console.log(`a : ${a} , b : ${b}, w.a : ${window.a}, w.b : ${window.b}`)
 
-    for(let i =1 ; i < 6 ;i++){
-        setTimeout( function() {
-            console.log(i)
-        }, i*1000)
-    }
+        // var i : 반복문이 다 실행되고 전역변수로 남아있음. 
+        // for (let i = 1; i < 6; i++) {
+        //     setTimeout(function () {
+        //         console.log(i)
+        //     }, i * 1000)
+        // }
 
     </script>
 </body>
