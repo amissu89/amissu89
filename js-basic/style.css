@@ -136,3 +136,18 @@ ul.list::after {
 .show {
     display: block;
 }
+
+.image{
+    float:right;
+    width:400px;
+    /* 조건부로 fixted 됨. 부모박스 넘어서면 해제 */
+    position: sticky;
+
+    top : 100px;
+}
+
+.lorem{
+    float: left;
+    width: 300px;
+    margin-top: 200px;
+}
