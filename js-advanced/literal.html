@@ -24,6 +24,38 @@
         console.log([...arr, ...arr2]) //array 합치기 복사 
                                         //deep copy 할 때 유용
 
+        /*
+        레퍼런스데이터 타입 : object, array. 등호로 복사하게 되면 주소값 참조하게 되서 값들을 공유하게됨
+        */
+
+        let obj1 = {a:1, b:2}
+        let obj2 = {...obj1, b:5, c:3}
+        console.log(obj2) //대괄호, 중괄호 다 벗겨주네
+        let obj3 = {...obj2}
+        console.log(obj3)
+        
+        let aaar = [10,20, 30]
+        function add(a,b,c){
+            return a+b+c
+        }
+
+        add(...aaar)
+
+        let person = {
+            hi : function(){
+                console.log(this.name + ' hiiii')
+            }
+        }
+
+        person.hi()
+
+        let person2 = {
+            name : 'kim'
+        }
+
+        person.hi.apply(person2)
+        person.hi.call(person2)
+
         //해체분석기
         function foo(strings, var1, var2) {
             console.log(strings)
