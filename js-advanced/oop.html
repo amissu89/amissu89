@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(name, age){
+            //this : 새로 생성되는 object를 뜻함
+            this.name = name
+            this.age = age
+            this.sayHi = function(){
+                console.log(`안녕하세요. ${this.name}`)
+            }
+        }
+
+        let s1 = new Student('kim', 20)
+        let s2 = new Student('park', 21)
+        let s3 = new Student('lee', 22)
+        console.log(s1)
+        s2.sayHi()
+    
+        function Product(name, price){
+            this.name = name
+            this.price = price
+            this.vat = function(){
+                console.log(`부가세 : ${this.price*0.1}`)
+            }
+        }
+
+        let p1 = new Product('shirt', 50000)
+        let p2 = new Product('pants', 60000)
+
+        p1.vat()
+
+        //prototype은 유전자.
+        //prototype에 값을 추가하면 모든 자식들이 물려받기 가능
+        //함수에만 생성됨
+        console.log(Product.prototype)
+        Product.prototype.madein = 'china'
+
+        console.log(p1.__proto__) //부모의 유전자를 출력해줘
+        let parent = {name : 'kim'}
+        let child = {}
+        //부모의 유전자를 등록할수도 있음
+        child.__proto__ = parent
+        console.log(child.name)
+
+        function remove3(){
+            for(let idx = 0 ; idx < this.length; ++idx){
+                if(this[idx] ===3 ){
+                    this.splice(idx, 1)
+                }
+            }
+          
+            console.log(this)
+        }
+        Array.prototype.remove3 = remove3
+       
+
+        let arr = [1,2,3]
+        arr.remove3()
+
+    
+        class Parent {
+            constructor(){
+                this.name = 'kim' 
+                //자신이 직접 함수를 가짐
+                this.sayHi = function(){
+                    console.log('say hi')
+                }
+            }
+
+            //부모.prototype.에 함수가 추가됨
+            sayHi2(){
+                console.log('say hi 2')
+            }
+        }
+
+        class Grandpa {
+            constructor(name){
+                this.lastname = 'kim'
+                this.name = name
+            }
+        }
+
+        class Father extends Grandpa{
+            constructor(name){
+                super(name)
+                this.age = 50
+            }
+
+            get nextAge(){
+                return this.age +1 
+            }
+            set Age(age){
+                this.age = age
+            }
+        }
+        
+        let f1 = new Father('용림')
+
+
+        let foo = {
+            name :'yllee',
+            age : 30,
+            get nextAge(){
+                return this.age +1 
+            },
+            set Age(age){
+                this.age = age
+            }
+        }
+
+        foo.Age = 33
+        console.log(foo.nextAge)
+
+
+        class Animal{
+            constructor(type, color){
+                this.type = type
+                this.color = color
+                this.addOneYear()
+            }
+        }
+
+        Animal.prototype.addOneYear = function(){
+            console.log('')
+        }
+
+        class Dog extends Animal{
+            constructor(type, color){
+                super(type, color)
+                
+            }
+        }
+
+        Dog.__prot__.addOneYear = function(){
+            console.error('errorrr')
+        }
+
+        let dog1 = new Dog('말티즈', 'white')
+        let dog2 = new Dog('진돗개', 'brown')
+        dog1.addOneYear()
+        
+
+        class Cat extends Animal{
+            constructor(type, color, age){
+                super(type, color)
+                this.age = age
+            }
+        }
+
+        let cat1 = new Cat('코숏', 'white', 5)
+        let cat2 = new Cat('러시안블루', 'brown', 2)
+
+    </script>
+</body>
+</html>
