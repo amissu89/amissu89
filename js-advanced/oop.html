@@ -123,24 +123,24 @@
             constructor(type, color){
                 this.type = type
                 this.color = color
-                this.addOneYear()
             }
-        }
+            
+            addOneYear() { 
+                console.log('This is Animal Class')
+            }
 
-        Animal.prototype.addOneYear = function(){
-            console.log('')
         }
 
         class Dog extends Animal{
             constructor(type, color){
                 super(type, color)
-                
+            }
+
+            addOneYear(){
+                console.error('errro')
             }
         }
 
-        Dog.__prot__.addOneYear = function(){
-            console.error('errorrr')
-        }
 
         let dog1 = new Dog('말티즈', 'white')
         let dog2 = new Dog('진돗개', 'brown')
@@ -152,10 +152,69 @@
                 super(type, color)
                 this.age = age
             }
+
+            addOneYear(){
+                console.log(`AGE is : ${this.age+1}`)
+            }
         }
 
         let cat1 = new Cat('코숏', 'white', 5)
         let cat2 = new Cat('러시안블루', 'brown', 2)
+        cat1.addOneYear()
+
+
+        class Unit{
+            constructor(power = 5, hp = 100){
+                this.power = power
+                this.hp = hp
+            }
+
+            get battlePoint(){
+                return this.power + this.hp
+            }
+
+            set heal(val){
+                this.hp += val
+            }
+        }
+
+        let thor = new Unit()
+        console.log(thor.battlePoint)
+        thor.heal = 50
+        console.log(thor)
+
+        var data = {
+            odd : [],
+            even : [],
+            set setter(array){
+                let tmp = [...array]
+                tmp.forEach((element)=>{
+                    if(element % 2 === 0)
+                        this.even.push(element)
+                    else
+                        this.odd.push(element)
+                })
+            },
+
+            get getter(){
+                let obj = {
+                    odd : this.odd.sort(function(a,b){
+                        return a-b
+                    }),
+                    even : this.even.sort(function(a,b){
+                        return a-b
+                    }),
+                }
+
+                return obj
+                // return [...this.odd, ...this.even].sort(function(a,b){
+                //     return a-b
+                // })
+            }
+        }
+
+        data.setter = [1,2,3,45,10,7]
+        console.log(data.getter)
 
     </script>
 </body>
