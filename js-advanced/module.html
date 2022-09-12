@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>module</h2>
+
+    <script type="module">
+        import a from './library.js'
+        import {name as n} from './library.js'
+        //모든걸 다 가져올 때 사용가능하다 default한 애들은 * 로 못 가져옴
+        //import * as nick from './library.js'
+        //아래처럼 import 해올 수도 있음
+        //import a, {name} from './library.js'
+        //이름을 정확히 입력
+        //import {name} from './library.js'
+        
+        console.log(n)
+        
+        console.log(a)
+    </script>
+
+</body>
+</html>
