@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //array 전용
+        [1,2,3].forEach(element => {
+            console.log(element)
+        })
+
+        class Parent{
+
+        }
+        Parent.prototype.name = 'park'
+        let p = new Parent()
+        //object 전용
+        //for in. object에 있던 값을 전부 하나씩 꺼내서 사용할 때
+        //enumerable 한 것(셀 수 있는 것)만 반복해줌
+        let obj = {name:'name', age:30}
+        Object.getOwnPropertyDescriptor(obj, 'name')
+        for(let key in p){
+            if(p.hasOwnProperty(key)){
+                console.log(`내 것!@!! : key : ${key}, val : ${p[key]}`)
+            }
+            else
+                console.log(`key : ${key}, val : ${p[key]}`)
+        }
+
+        //iterable 전용
+        //array, 문자, argument, nodelist, map, set
+        //내부 데이터 출력을 도와주는 애
+        let array = [30, 40, 50]
+        for(let key of array){
+            console.log(key)
+        }
+
+        for(let key of 'sadfasdfasdfa')
+            console.log(key)
+
+        
+    </script>
+</body>
+</html>

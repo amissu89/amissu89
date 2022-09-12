@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">판정</button>
+    <script>
+        //아래 함수를 실행하면 promise 객체가 남음
+        async function add(a, b) {
+            return a + b
+            //return Promise.reject('fail') 억지로 fail을 줄수도 있긴함. 
+        }
+
+        //성공만 가능함
+        add(3, 5).then(function (result) {
+            console.log('성공입니다')
+            console.log('add : ' + result)
+        })
+
+        async function minus() {
+            let promise = new Promise(function (resolve, reject) {
+                let calc = 10 - 1
+                //resolve(calc)
+                reject(39)
+            })
+
+            //async function안에서 쓰는 await. then대신 사용가능
+            //await는 프로미스 실패할 때, 에러나고 멈춘다.
+            try {
+                let result = await promise //await : promise 해결까지 기다려줘~
+                console.log("minus : " + result)
+            }
+            catch {
+                console.log('minus error....')
+            }
+        }
+
+        minus()
+
+        async function guess() {
+            let promise = new Promise(function (resolve, reject) {
+                document.querySelector('#btn').addEventListener('click', function(){
+                    resolve()
+                })
+            })
+
+            try {
+                let result = await promise
+                console.log('btn success')
+            } catch {
+                console.error('btn fail')
+            }
+        }
+
+        guess()
+    </script>
+</body>
+
+</html>
