@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //자료들간의 연관성을 표현하기 위해 쓰는 자료형
+        let person = new Map()
+        person.set('name', 'kim')
+
+        for (let key of person.keys())
+            console.log(key)
+
+        for (let val of person.values())
+            console.log(val)
+
+        let rollbook = new Set(['a','b','c','a','a'])
+        rollbook.add('z')
+        console.log(rollbook.has('q'))
+        rollbook.size
+
+        let arr = ['a','b','c','a','a']
+        let rollbook2 = new Set(arr) //array to set
+        arr = [...rollbook2]
+
+    </script>
+</body>
+
+</html>

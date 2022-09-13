@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <custom-input name="pw" type="password"></custom-input>
+    <custom-input name="email" type="email"></custom-input>
+
+     <!-- html 임시 보관함 -->
+    <template id="template1">
+        <label for="">이메일을 입력</label> 
+        <input>
+        <style>label {color : red} </style>
+    </template>
+    <label for="">ddddd</label>
+    <input type="range" name="range" id="range">
+    <div id="mordor">
+    </div>
+    <script>
+        //간지가 나서 쓴다? 
+        //완벽한 html 모듈 = web component + shadow dom
+        let mordor = document.querySelector('#mordor')
+        mordor.attachShadow({mode: 'open'})
+        mordor.shadowRoot.innerHTML = '커몬ㄴㄴㄴㄴ'
+
+        class CustomInput extends HTMLElement{
+            connectedCallback(){
+                let name = this.getAttribute('name')
+                let type = this.getAttribute('type')
+
+                let label = document.createElement('label')
+                label.textContent = name
+                //label.style.color = 'red'
+                let input = document.createElement('input')
+                input.type = type
+
+                this.attachShadow({mode: 'open'})
+                //this.shadowRoot.append(label, input)
+                this.shadowRoot.append(template1.content.cloneNode(true))
+
+                let el = this.shadowRoot.querySelector('label')
+                el.addEventListener('click', function(){
+                    console.log('label 클릭')
+                })
+            }
+
+            static get observedAttributes(){
+                return ['name'] //name이라는 attribute가 변할 때 알려줘
+            }
+
+            //attribute 변경할 때마다 html 재렌더링 하고 싶을 때
+            attributeChangedCallback(){
+                console.log(this.getAttribute('name'))
+            }
+        }
+        //lit, stencil
+        customElements.define('custom-input', CustomInput)
+
+    </script>
+</body>
+</html>

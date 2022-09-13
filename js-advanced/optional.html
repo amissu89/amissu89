@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name : 'kim',
+            //age : {value : 20}
+        }
+        //점찍는게 2개 이상일 경우, 에러가 발생함
+        //Optional chaining
+        console.log(user.age?.value) //왼쪽이 비어있으면(null, undefined) 오른쪽 안 해줌
+        document.querySelector('#a')?.innerHTML
+
+
+        //??
+        let p
+        console.log(p ?? 'null or undefined 로딩중이다!!')
+    </script>
+</body>
+</html>

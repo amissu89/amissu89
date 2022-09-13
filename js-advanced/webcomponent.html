@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <custom-input name="pw" type="password"></custom-input>
+    <custom-input name="email" type="email"></custom-input>
+    
+    <script>
+
+        class CustomInput extends HTMLElement{
+            connectedCallback(){
+                let name = this.getAttribute('name')
+                let type = this.getAttribute('type')
+
+                let label = document.createElement('label')
+                label.textContent = name
+                let input = document.createElement('input')
+                input.type = type
+
+                this.append(label, input)
+            }
+
+            static get observedAttributes(){
+                return ['name'] //name이라는 attribute가 변할 때 알려줘
+            }
+
+            //attribute 변경할 때마다 html 재렌더링 하고 싶을 때
+            attributeChangedCallback(){
+                console.log(this.getAttribute('name'))
+            }
+        }
+        //lit, stencil
+        customElements.define('custom-input', CustomInput)
+    </script>
+
+</body>
+
+</html>
