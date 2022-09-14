@@ -1,0 +1,11 @@
+Model Information:
+* title:	3 emoji without anim
+* source:	https://sketchfab.com/3d-models/3-emoji-without-anim-25245b6a74514a9faae8da9cb184e5e9
+* author:	Kawsar (https://sketchfab.com/Khsuzan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "3 emoji without anim" (https://sketchfab.com/3d-models/3-emoji-without-anim-25245b6a74514a9faae8da9cb184e5e9) by Kawsar (https://sketchfab.com/Khsuzan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
