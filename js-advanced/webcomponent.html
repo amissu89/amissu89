@@ -14,14 +14,14 @@
     
     <script>
 
-        class CustomInput extends HTMLElement{
+        class CustomInput extends HTMLElement {
             connectedCallback(){
-                let name = this.getAttribute('name')
-                let type = this.getAttribute('type')
+                const name = this.getAttribute('name')
+                const type = this.getAttribute('type')
 
-                let label = document.createElement('label')
+                const label = document.createElement('label')
                 label.textContent = name
-                let input = document.createElement('input')
+                const input = document.createElement('input')
                 input.type = type
 
                 this.append(label, input)

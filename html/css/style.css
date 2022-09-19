@@ -185,7 +185,7 @@ html에서 style 속성 1000점*/
 }
 
 .main-title{
-    color:white;
+    color:black;
     font-size: 40px;
     margin-top: 150px;
 }
@@ -433,4 +433,63 @@ footer{
 .flex-item:nth-child(3), .flex-item:nth-child(4){
     flex-grow: 0.2;
     text-align: center;
+}
+
+.flex-menu-container{
+    display: flex;
+    justify-content: center;
+    /* 모바일, pc 버전의 반응형 짤때 유용함 */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-menu-item{
+    width: 20vw;
+    height: 100px;
+    background-color: green;
+}
+
+.test{
+    /*
+    10 rem : html 태그 폰트사이즈(기본적으로 16px)의 10배
+    왜 쓰나?
+    em : 내 폰트 사이즈의 X배
+    */
+    width: 60vw; /*브라우저 폭에 비례*/
+    height: 10vh; /*브라우저 높이에 비례*/
+    background : grey;
+}
+
+/*현재 폭이 1200px 이하에서는 아래를 적용해주세요*/
+/*1200, 992, 768, 576px 3~4개 브레이크 포인트 사용하는걸 권장*/
+
+/*screen : 화면
+print : 프린트 할 때 사용하는 것*/
+@media screen and (max-width : 1200px){
+    .main-title{
+        font-size : 30px;
+    }
+
+    .flex-item{
+        font-size : 10px;
+    }
+
+    .flex-menu-item{
+        width:40vw;
+    }
+}
+
+@media screen and (max-width : 768px){
+    .main-title{
+        font-size : 20px;
+    }
+
+    .flex-item{
+        font-size : 7px;
+    }
+
+    .flex-menu-item{
+        width:50vw;
+    }
 }
