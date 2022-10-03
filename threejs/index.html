@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <canvas id="canvas" width="1200" height="1000"> </canvas>
+    <canvas id="canvas" width="800" height="700"> </canvas>
 
     <script type="importmap">
         {
@@ -28,21 +28,20 @@
             canvas : document.querySelector('#canvas'),
             antialias : true
         })
-
-        function foo(){
-            console.log(this)
-        }
-
+        
         renderer.outputEncoding = THREE.sRGBEncoding
 
-        let camera = new THREE.PerspectiveCamera(30, 1)
-        camera.position.set(0,0,1200)
+        const canvas = document.getElementById('canvas')
+        const param2 = canvas.style.width/canvas.style.height
+        //param 1 : 값이 작을수록 조그매짐 (시야각 조절)
+        //param 2 : 숫자가 클수록 좁아짐
+        let camera = new THREE.PerspectiveCamera(75, 1)
+        camera.position.set(0,0,30)
         
-        scene.background = new THREE.Color('white')
+        scene.background = new THREE.Color('yellow')
 
         let loader = new GLTFLoader()
-        // loader.load('./shiba/scene.gltf', (gltf)=> {
-        loader.load('./heart/scene.gltf', (gltf)=> {
+        loader.load('./shiba/scene.gltf', (gltf)=> {
             console.log(this)
             console.log('loaded')
 
@@ -50,7 +49,8 @@
 
             function animate(){
                 requestAnimationFrame(animate)
-                gltf.scene.rotation.y += 0.01
+                gltf.scene.rotation.x -= 0.1
+                gltf.scene.rotation.y -= 0.1
                 
                 renderer.render(scene, camera)
             }
