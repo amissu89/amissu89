@@ -1,0 +1,52 @@
+:root{
+    --yellow-clr: #FEE715;
+    --black-clr: #101820;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    text-decoration: none;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header{
+    width: 100vw;
+    height:15vh;
+    background-color: var(--yellow-clr);
+    text-align: center;
+    font-size: 5rem;
+    color:var(--black-clr);
+}
+
+#container{
+    width: 100vw;
+    height:85vh;
+    background: var(--black-clr);
+    padding:30px;
+    color : var(--yellow-clr);
+}
+
+.startBtn{
+    width: 20vw;
+    height: 15vh;
+    background: var(--yellow-clr);
+    color:var(--black-clr);
+    font-size: 2rem;
+    border-radius: 10px;
+    border-color: var(--yellow-clr);
+    margin-bottom: 30px;
+}
+
+.canvas{
+    width: 100%;
+    height: 85vh;
+    background: bisque;
+}
