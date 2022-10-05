@@ -4,13 +4,24 @@
     <!-- 동적 UI 만드는 법
     1. UI의 현재 상태를 데이터로 저장해둠
     2. 데이터에 따라 UI가 어떻게 보일지 작성 -->
-    <div class="black-bg" v-if="modalShow">
+
+    <!-- <div class="black-bg" v-if="modalShow">
       <div class="white-bg">
-        <h4>상세페이지</h4>
-        <p>상세페이지내용임</p>
+        <h4>{{ products[productIdx].title }}</h4>
+        <p>{{ products[productIdx].content }}</p>
+        <p>{{ products[productIdx].price }}원</p>
         <button @click="modalShow = false">닫기</button>
+        <Discount/>
       </div>
-    </div>
+    </div> -->
+
+    <DetailModal/>
+
+    <div v-if="1 === 0">안녕하세요.</div>
+    <div v-else-if="1 === 2">그럼 이것 0</div>
+    <div v-else>그럼 이것1</div>
+
+    <Discount/>
 
     <div class="menu">
       <a href="" v-for="(name, idx) in menuName" :key="idx">{{ name }}</a>
@@ -18,7 +29,15 @@
 
     <div v-for="(product, idx) in products" :key="idx">
       <!-- <img :src="`./assets/img/room${idx}.jpg`" alt=""> -->
-      <img :src="product.image" alt="" @click="modalShow = true" class="room-img"/>
+      <img
+        :src="product.image"
+        alt=""
+        @click="
+          modalShow = true;
+          clickedProduct(idx);
+        "
+        class="room-img"
+      />
       <h4 class="red" :style="redFont">{{ product.title }}</h4>
       <p>{{ product.price }} 만원</p>
       <p>{{ product.content }}</p>
@@ -32,6 +51,9 @@
 
 <script>
 import Products from "./products.js";
+import Discount from "./components/Discount.vue"
+import DetailModal from "./components/DetailModal.vue"
+
 console.log(Products);
 export default {
   name: "App",
@@ -39,19 +61,25 @@ export default {
     return {
       products: Products,
       price: [60, 50, 40],
-      //products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
       redFont: "color:red",
       menuName: ["Home", "Products", "About"],
       report: [0, 0, 0],
       modalShow: false,
+      productIdx: 0,
     };
   },
   methods: {
     increaseReportCnt(idx) {
       this.report[idx] += 1;
     },
+    clickedProduct(idx) {
+      this.productIdx = idx;
+    },
   },
-  components: {},
+  components: {
+    Discount : Discount, //왼쪽 변수 : 오른쪽 import해온것
+    DetailModal : DetailModal,
+  },
 };
 </script>
 
