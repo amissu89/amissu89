@@ -15,44 +15,32 @@
       </div>
     </div> -->
 
-    <DetailModal/>
+    <DetailModal
+      :products="products"
+      :modalShow="modalShow"
+      :productIdx="productIdx"
+    />
 
     <div v-if="1 === 0">안녕하세요.</div>
     <div v-else-if="1 === 2">그럼 이것 0</div>
     <div v-else>그럼 이것1</div>
 
-    <Discount/>
+    <Discount v-bind="obj" />
 
     <div class="menu">
       <a href="" v-for="(name, idx) in menuName" :key="idx">{{ name }}</a>
     </div>
 
-    <div v-for="(product, idx) in products" :key="idx">
-      <!-- <img :src="`./assets/img/room${idx}.jpg`" alt=""> -->
-      <img
-        :src="product.image"
-        alt=""
-        @click="
-          modalShow = true;
-          clickedProduct(idx);
-        "
-        class="room-img"
-      />
-      <h4 class="red" :style="redFont">{{ product.title }}</h4>
-      <p>{{ product.price }} 만원</p>
-      <p>{{ product.content }}</p>
-      <!-- <button v-on:click="aaa">허위매물 신고</button>  -->
-      <!-- @mouseover 등등 @은 v-on과 같음 -->
-      <button @click="increaseReportCnt(idx)">허위매물 신고</button>
-      <span>신고 수 : {{ report[idx] }}</span>
-    </div>
+    <!-- @mouseover 등등 @은 v-on과 같음 -->
+    <Card :product="product" v-for="(product, idx) in products" :key="idx" />
   </div>
 </template>
 
 <script>
 import Products from "./products.js";
-import Discount from "./components/Discount.vue"
-import DetailModal from "./components/DetailModal.vue"
+import Discount from "./components/Discount.vue";
+import DetailModal from "./components/DetailModal.vue";
+import Card from "./components/Card.vue";
 
 console.log(Products);
 export default {
@@ -66,6 +54,10 @@ export default {
       report: [0, 0, 0],
       modalShow: false,
       productIdx: 0,
+      obj: {
+        name: "lee",
+        age: 33,
+      },
     };
   },
   methods: {
@@ -74,11 +66,13 @@ export default {
     },
     clickedProduct(idx) {
       this.productIdx = idx;
+      console.log(idx);
     },
   },
   components: {
-    Discount : Discount, //왼쪽 변수 : 오른쪽 import해온것
-    DetailModal : DetailModal,
+    Discount: Discount, //왼쪽 변수 : 오른쪽 import해온것
+    DetailModal: DetailModal,
+    Card: Card,
   },
 };
 </script>

@@ -4,15 +4,22 @@
         <h4>{{ products[productIdx].title }}</h4>
         <p>{{ products[productIdx].content }}</p>
         <p>{{ products[productIdx].price }}원</p>
-        <button @click="modalShow = false">닫기</button>
+        <!-- <button @click="modalShow = false">닫기</button> -->
       
       </div>
     </div>
 </template>
 
 <script>
+
 export default {
-    name : "DetailModal"
+    name : "DetailModal",
+    props : {
+      //string, Object, Array 등의 타입을 적기
+      products : Array,
+      modalShow : Boolean,
+      productIdx : Number,
+    }
 }
 </script>
 
