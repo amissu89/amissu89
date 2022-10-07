@@ -1,20 +1,6 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <div>
-    <!-- 동적 UI 만드는 법
-    1. UI의 현재 상태를 데이터로 저장해둠
-    2. 데이터에 따라 UI가 어떻게 보일지 작성 -->
-
-    <!-- <div class="black-bg" v-if="modalShow">
-      <div class="white-bg">
-        <h4>{{ products[productIdx].title }}</h4>
-        <p>{{ products[productIdx].content }}</p>
-        <p>{{ products[productIdx].price }}원</p>
-        <button @click="modalShow = false">닫기</button>
-        <Discount/>
-      </div>
-    </div> -->
-
     <DetailModal
       :products="products"
       :modalShow="modalShow"
@@ -32,7 +18,7 @@
     </div>
 
     <!-- @mouseover 등등 @은 v-on과 같음 -->
-    <Card :product="product" v-for="(product, idx) in products" :key="idx" />
+    <Card @openModal="modalShow = true" :product="product" v-for="(product, idx) in products" :key="idx" />
   </div>
 </template>
 
@@ -49,7 +35,6 @@ export default {
     return {
       products: Products,
       price: [60, 50, 40],
-      redFont: "color:red",
       menuName: ["Home", "Products", "About"],
       report: [0, 0, 0],
       modalShow: false,
