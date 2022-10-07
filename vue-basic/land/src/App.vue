@@ -2,6 +2,7 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <div>
     <DetailModal
+      @closeModal="modalShow = false" 
       :products="products"
       :modalShow="modalShow"
       :productIdx="productIdx"
@@ -18,7 +19,7 @@
     </div>
 
     <!-- @mouseover 등등 @은 v-on과 같음 -->
-    <Card @openModal="modalShow = true" :product="product" v-for="(product, idx) in products" :key="idx" />
+    <Card @openModal="modalShow = true; productIdx=$event" :product="product" v-for="(product, idx) in products" :key="idx" />
   </div>
 </template>
 

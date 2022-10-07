@@ -4,10 +4,11 @@
     2. 데이터에 따라 UI가 어떻게 보일지 작성 -->
       <div class="black-bg" v-if="modalShow">
       <div class="white-bg">
+        <img :src="products[productIdx].image" alt="" class="room-img" />
         <h4>{{ products[productIdx].title }}</h4>
         <p>{{ products[productIdx].content }}</p>
         <p>{{ products[productIdx].price }}원</p>
-        <!-- <button @click="modalShow = false">닫기</button> -->
+        <button @click="closeModal">닫기</button>
       
       </div>
     </div>
@@ -22,6 +23,11 @@ export default {
       products : Array,
       modalShow : Boolean,
       productIdx : Number,
+    },
+    methods : {
+      closeModal(){
+        this.$emit('closeModal')
+      }
     }
 }
 </script>
