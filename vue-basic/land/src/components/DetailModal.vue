@@ -7,7 +7,11 @@
         <img :src="products[productIdx].image" alt="" class="room-img" />
         <h4>{{ products[productIdx].title }}</h4>
         <p>{{ products[productIdx].content }}</p>
-        <p>{{ products[productIdx].price }}원</p>
+        <label for="month">몇 개월</label>
+        <!-- <input @input="month = $event.target.value" type="text" id="month" name="month"> -->
+        <!-- textarea, select 모두 v-model 사용 가능 -->
+        <input type="text" v-model.number="month">
+        <p> {{month}} 개월 선택함. {{ products[productIdx].price * month }}원</p>
         <button @click="closeModal">닫기</button>
       
       </div>
@@ -18,6 +22,11 @@
 
 export default {
     name : "DetailModal",
+    data() {
+      return{
+        month : 1,
+      }
+    },
     props : {
       //string, Object, Array 등의 타입을 적기
       products : Array,
@@ -27,6 +36,20 @@ export default {
     methods : {
       closeModal(){
         this.$emit('closeModal')
+      },
+    },
+    watch : {
+      month(after, before){
+        console.log(`after ${after} before ${before}`)
+        if(typeof(after) === 'string'){
+          alert('문자열입니다.')
+          this.month = 1
+          return
+        }
+        console.log(typeof(after))
+        if (after > 12){
+          alert('12개월이 최대치입니다.')
+        }
       }
     }
 }
