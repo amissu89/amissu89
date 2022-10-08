@@ -24,7 +24,7 @@ export default {
     name : "DetailModal",
     data() {
       return{
-        month : 1,
+        month : 3,
       }
     },
     props : {
@@ -38,18 +38,23 @@ export default {
         this.$emit('closeModal')
       },
     },
-    watch : {
-      month(after, before){
-        console.log(`after ${after} before ${before}`)
-        if(typeof(after) === 'string'){
-          alert('문자열입니다.')
-          this.month = 1
-          return
-        }
-        console.log(typeof(after))
-        if (after > 12){
-          alert('12개월이 최대치입니다.')
-        }
+    // watch : {
+    //   month(after, before){
+    //     console.log(`after ${after} before ${before}`)
+    //     if(typeof(after) === 'string'){
+    //       alert('문자열입니다.')
+    //       this.month = 1
+    //       return
+    //     }
+    //     console.log(typeof(after))
+    //     if (after > 12){
+    //       alert('12개월이 최대치입니다.')
+    //     }
+    //   },
+    updated(){
+      if(this.month < 3){
+        alert('최소 계약가능 기간은 3개월부터입니다')
+        this.month = 3
       }
     }
 }

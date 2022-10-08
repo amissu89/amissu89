@@ -23,7 +23,9 @@
     <div v-else-if="1 === 2">그럼 이것 0</div>
     <div v-else>그럼 이것1</div>
 
-    <Discount v-bind="obj" />
+    <!-- <Discount v-bind="obj" v-if="discountShow == true"/> -->
+    <Discount v-bind="obj" :discountVal="discountVal"/>
+
     <button @click="sortByPriceDesc">가격순 정렬(오름차순)</button>
     <button @click="sortByPriceAsc">가격순 정렬(내림차순)</button>
     <button @click="sortByTitle">이름순 정렬</button>
@@ -52,7 +54,6 @@ import Discount from "./components/Discount.vue";
 import DetailModal from "./components/DetailModal.vue";
 import Card from "./components/Card.vue";
 
-console.log(Products);
 export default {
   name: "App",
   data() {
@@ -63,6 +64,8 @@ export default {
       menuName: ["Home", "Products", "About"],
       report: [0, 0, 0],
       modalShow: false,
+      discountShow :true,
+      discountVal : 30,
       productIdx: 0,
       obj: {
         name: "lee",
@@ -112,6 +115,19 @@ export default {
     DetailModal: DetailModal,
     Card: Card,
   },
+  created(){
+    //서버에서 데이터 가져올때 사용함
+  },
+  mounted() {
+    // setTimeout(()=>{
+    //   this.discountShow = false
+    // }, 2000)
+
+    setInterval(() =>{
+      if(this.discountVal > 0)
+        this.discountVal--
+    }, 1000)
+  }
 };
 </script>
 

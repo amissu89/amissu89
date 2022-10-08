@@ -9,13 +9,16 @@
 2. 등록
 3. use it -->
   <div class="discount">
-    <h4>지금 결제하면 20% 할인</h4>
+    <h4>지금 결제하면 {{discountVal}}% 할인</h4>
   </div>
 </template>
 
 <script>
 export default {
     name : "Discount",
+    props : {
+      discountVal : Number,
+    }
 };
 </script>
 
