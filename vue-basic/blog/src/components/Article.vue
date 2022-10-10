@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3">
+  <div class="card mb-3" v-for="(item, idx) in items" :key="idx">
     <img src="../assets/img/logo.png" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{item.title}}</h5>
@@ -17,7 +17,9 @@
 export default {
   name : "Article",
   props : {
-    item : Object,
+    items : Array,
+  },
+  mounted() {
   }
 };
 </script>

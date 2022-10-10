@@ -1,22 +1,24 @@
 <template>
   <div class="main-bg">
     <NavTop />
+    <router-link to="/list">리스트페이지</router-link>
     <div class="list-container">
-      <Article :item="item" v-for="(item, idx) in Items" :key="idx"/>
+      <router-view :items="Items" > </router-view>
+      
     </div>
   </div>
 </template>
 
 <script>
 import NavTop from "./components/NavTop.vue";
-import Article from "./components/Article.vue";
+//import Article from "./components/Article.vue";
 import Items from "./assets/dummy/items.js";
 
 export default {
   name: "App",
   components: {
     NavTop: NavTop,
-    Article: Article,
+  //  Article: Article,
   },
   data(){
     return {
@@ -40,7 +42,6 @@ export default {
   width: 100vw;
   height: 100vh;
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
   filter: brightness(80%) saturate(70%);
 }
