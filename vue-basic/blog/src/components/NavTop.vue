@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">이녹희 일기</a>
+        <a class="navbar-brand" href="#">
+          <router-link to="/home">홈으로</router-link> <br> 
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -16,7 +18,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">홈으로</a>
+              <a class="nav-link active" aria-current="page" href="#">
+                <router-link to="/list">글보기</router-link> <br> 
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">글쓰기</a>

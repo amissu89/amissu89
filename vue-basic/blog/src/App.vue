@@ -1,7 +1,6 @@
 <template>
   <div class="main-bg">
-    <NavTop />
-    <router-link to="/list">리스트페이지</router-link>
+    <NavTop />    
     <div class="list-container">
       <router-view :items="Items" > </router-view>
       

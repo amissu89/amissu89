@@ -1,8 +1,9 @@
 <template>
   <div class="card mb-3" v-for="(item, idx) in items" :key="idx">
-    <img src="../assets/img/logo.png" class="card-img-top" alt="..." />
+    <!-- <img src="../assets/img/logo.png" class="card-img-top" alt="..." /> -->
     <div class="card-body">
-      <h5 class="card-title">{{item.title}}</h5>
+      <!-- $router.go(1), go(-1) 뒤로가기 등 가능 -->
+      <h5 @click="$router.push(`/detail/${idx}`)" class="card-title">{{item.title}}</h5> 
       <p class="card-text">
         {{item.content}}
       </p>
