@@ -13,7 +13,8 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postings="postings" />
+  <Container :postings="postings" :page="page" />
+  <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -21,11 +22,19 @@
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
+
+  <!-- <div class='tab'>내용0</div>
+  <div class='tab'>내용1</div>
+  <div class='tab'>내용2</div>
+  <button @click='showTab(0)'>버튼0</button>
+  <button @click='showTab(1)'>버튼1</button>
+  <button @click='showTab(2)'>버튼2</button> -->
 </template>
 
 <script>
-import Container from "./components/Container.vue";
-import Postings from "./postings.js";
+import Container from "./components/Container.vue"
+import Postings from "./postings.js"
+import axios from 'axios'
 
 export default {
   name: "App",
@@ -35,8 +44,30 @@ export default {
   data() {
     return {
       postings: Postings,
+      cnt : 0,
+      page : 2,
     };
   },
+  methods : {
+    more() {
+      axios.get(`https://codingapple1.github.io/vue/more${this.cnt}.json`)
+      .then( res => {
+        this.postings.push(res.data)
+        this.cnt++
+      })
+      .catch( fail =>{
+        console.error(fail)
+      })
+    },
+    showTab(idx){
+      let tabs = [...document.getElementsByClassName('tab')]
+      tabs.forEach(element => {
+        element.style.display = 'none'
+      })
+  
+      tabs[idx].style.display = 'block'
+    }
+  }
 };
 </script>
 
@@ -111,5 +142,8 @@ export default {
   position: relative;
   border-right: 1px solid #eee;
   border-left: 1px solid #eee;
+}
+.tab{
+  display: none;
 }
 </style>
