@@ -7,7 +7,7 @@
 
     <!-- 필터선택페이지 -->
     <div v-if="page === 1">
-      <div class="upload-image"></div>
+      <div class="upload-image" :style="uploadImg"></div>
       <div class="filters">
         <div class="filter-1"></div>
         <div class="filter-1"></div>
@@ -19,9 +19,10 @@
 
     <!-- 글작성페이지 -->
     <div v-if="page === 2">
-      <div class="upload-image"></div>
+      <div class="upload-image" :style="uploadImg"></div>
       <div class="write">
-        <textarea class="write-box">write!</textarea>
+        <textarea :value="postText" class="write-box" id="writeText"
+        @input="sendTextArea">write!</textarea>
       </div>
     </div>
   </div>
@@ -38,7 +39,24 @@ export default {
   props: {
     postings: Array,
     page: Number,
+    imgUrl : String,
+    postText : String,
   },
+  data(){
+    return{
+      uploadImg : ""
+    }
+  },
+  updated(){
+    this.uploadImg = `background-image : url(${this.imgUrl})`
+  },
+  methods : {
+    sendTextArea(e){
+      const text = e.target.value//document.getElementById('writeText').textContent
+      console.log(text)
+      this.$emit('sendTextArea', text)
+    }
+  }
 };
 </script>
 

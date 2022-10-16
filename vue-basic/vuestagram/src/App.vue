@@ -4,22 +4,33 @@
 2. 라우터로 나눌 페이지
 3. html 너무 길어서 복잡하다 -->
   <div class="header">
+    <h1>text {{postText}}</h1>
     <ul class="header-button-left">
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="page === 1" @click="page++">Next</li>
+      <li v-if="page === 2" @click="publish" @sendTextArea="updatePostText">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postings="postings" :page="page" />
+  <Container :postings="postings" :page="page" :imgUrl="imgUrl"
+  :postText="postText" />
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
-      <label for="file" class="input-plus">+</label>
+      <!-- <input type="file"  id="file" class="inputfile" />
+      <label for="file" class="input-plus">+</label> -->
+      <!-- accept는 임시방편일뿐 -->
+      <input
+        type="file"
+        name="upload"
+        id="upload"
+        accept="image/*"
+        @change="upload"
+      />
     </ul>
   </div>
 
@@ -32,9 +43,9 @@
 </template>
 
 <script>
-import Container from "./components/Container.vue"
-import Postings from "./postings.js"
-import axios from 'axios'
+import Container from "./components/Container.vue";
+import Postings from "./postings.js";
+import axios from "axios";
 
 export default {
   name: "App",
@@ -44,30 +55,59 @@ export default {
   data() {
     return {
       postings: Postings,
-      cnt : 0,
-      page : 2,
+      cnt: 0,
+      page: 0,
+      imgUrl: "",
+      imgBlob: null,
+      postText : "",
     };
   },
-  methods : {
+  methods: {
     more() {
-      axios.get(`https://codingapple1.github.io/vue/more${this.cnt}.json`)
-      .then( res => {
-        this.postings.push(res.data)
-        this.cnt++
-      })
-      .catch( fail =>{
-        console.error(fail)
-      })
+      axios
+        .get(`https://codingapple1.github.io/vue/more${this.cnt}.json`)
+        .then((res) => {
+          this.postings.push(res.data);
+          this.cnt++;
+        })
+        .catch((fail) => {
+          console.error(fail);
+        });
     },
-    showTab(idx){
-      let tabs = [...document.getElementsByClassName('tab')]
-      tabs.forEach(element => {
-        element.style.display = 'none'
-      })
-  
-      tabs[idx].style.display = 'block'
+    showTab(idx) {
+      let tabs = [...document.getElementsByClassName("tab")];
+      tabs.forEach((element) => {
+        element.style.display = "none";
+      });
+
+      tabs[idx].style.display = "block";
+    },
+    upload(e) {
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      this.page = 1;
+      this.imgUrl = url;
+    },
+    publish(text) {
+      const post = {
+        name: "yllee",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.imgUrl,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: text,
+        filter: "perpetua",
+      };
+      this.postings.unshift(post);
+      this.page = 0;
+    },
+    updatePostText(text){
+      console.log(text)
+      this.postText = text
+      this.publish(this.postText);
     }
-  }
+  },
 };
 </script>
 
@@ -143,7 +183,7 @@ export default {
   border-right: 1px solid #eee;
   border-left: 1px solid #eee;
 }
-.tab{
+.tab {
   display: none;
 }
 </style>
