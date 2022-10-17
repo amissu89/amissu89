@@ -21,7 +21,7 @@
     <div v-if="page === 2">
       <div class="upload-image" :style="uploadImg"></div>
       <div class="write">
-        <textarea class="write-box" id="writeText"
+        <textarea :value="postText" class="write-box" id="writeText"
         @input="sendTextArea">write!</textarea>
       </div>
     </div>
