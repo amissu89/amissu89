@@ -4,19 +4,18 @@
 2. 라우터로 나눌 페이지
 3. html 너무 길어서 복잡하다 -->
   <div class="header">
-    <h1>text {{postText}}</h1>
     <ul class="header-button-left">
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
       <li v-if="page === 1" @click="page++">Next</li>
-      <li v-if="page === 2" @click="publish" @sendTextArea="updatePostText($event)">발행</li>
+      <li v-if="page === 2" @click="publish">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
   <Container :postings="postings" :page="page" :imgUrl="imgUrl"
-  :postText="postText" />
+    @sendTextArea="postText = $event" />
   <button @click="more">더보기</button>
 
   <div class="footer">
@@ -88,7 +87,7 @@ export default {
       this.page = 1;
       this.imgUrl = url;
     },
-    publish(text) {
+    publish() {
       const post = {
         name: "yllee",
         userImage: "https://placeimg.com/100/100/arch",
@@ -96,17 +95,12 @@ export default {
         likes: 36,
         date: "May 15",
         liked: false,
-        content: text,
+        content: this.postText,
         filter: "perpetua",
       };
       this.postings.unshift(post);
       this.page = 0;
     },
-    updatePostText(text){
-      console.log(`updatePostText : ${text}`)
-      this.postText = text
-      this.publish(this.postText);
-    }
   },
 };
 </script>

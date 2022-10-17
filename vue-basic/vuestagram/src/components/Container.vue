@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{page}}</h1>
+    <h1>{{ page }}</h1>
     <div v-if="page === 0">
       <Post :posting="posting" v-for="(posting, idx) in postings" :key="idx" />
     </div>
@@ -9,11 +9,7 @@
     <div v-if="page === 1">
       <div class="upload-image" :style="uploadImg"></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox :imgUrl="imgUrl" :filter="filter" v-for="(filter, idx) in filterList" :key="idx"> </FilterBox>
       </div>
     </div>
 
@@ -21,8 +17,13 @@
     <div v-if="page === 2">
       <div class="upload-image" :style="uploadImg"></div>
       <div class="write">
-        <textarea :value="postText" class="write-box" id="writeText"
-        @input="sendTextArea">write!</textarea>
+        <textarea
+          class="write-box"
+          id="writeText"
+          @input="$emit('sendTextArea', $event.target.value)"
+        >
+write!</textarea
+        >
       </div>
     </div>
   </div>
@@ -30,32 +31,62 @@
 
 <script>
 import Post from "./Post.vue";
+import FilterBox from "./FilterBox.vue";
 
 export default {
   name: "post",
   components: {
     Post: Post,
+    FilterBox: FilterBox,
   },
   props: {
     postings: Array,
     page: Number,
-    imgUrl : String,
-    postText : String,
+    imgUrl: String,
+    postText: String,
   },
-  data(){
-    return{
-      uploadImg : ""
-    }
+  data() {
+    return {
+      uploadImg: "",
+      filterList: [
+        "aden",
+        "_1977",
+        "brannan",
+        "brooklyn",
+        "clarendon",
+        "earlybird",
+        "gingham",
+        "hudson",
+        "inkwell",
+        "kelvin",
+        "lark",
+        "lofi",
+        "maven",
+        "mayfair",
+        "moon",
+        "nashville",
+        "perpetua",
+        "reyes",
+        "rise",
+        "slumber",
+        "stinson",
+        "toaster",
+        "valencia",
+        "walden",
+        "willow",
+        "xpro2",
+      ],
+    };
   },
-  updated(){
-    this.uploadImg = `background-image : url(${this.imgUrl})`
+  updated() {
+    this.uploadImg = `background-image : url(${this.imgUrl})`;
   },
-  methods : {
-    sendTextArea(e){
-      const text = e.target.value
-      this.$emit('sendTextArea', text)
-    }
-  }
+  methods: {
+    sendTextArea(e) {
+      const text = e.target.value;
+      this.$emit("sendTextArea", text);
+    },
+  },
 };
 </script>
 
