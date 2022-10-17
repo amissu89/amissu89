@@ -21,7 +21,7 @@
     <div v-if="page === 2">
       <div class="upload-image" :style="uploadImg"></div>
       <div class="write">
-        <textarea :value="postText" class="write-box" id="writeText"
+        <textarea class="write-box" id="writeText"
         @input="sendTextArea">write!</textarea>
       </div>
     </div>
@@ -52,8 +52,7 @@ export default {
   },
   methods : {
     sendTextArea(e){
-      const text = e.target.value//document.getElementById('writeText').textContent
-      console.log(text)
+      const text = e.target.value
       this.$emit('sendTextArea', text)
     }
   }

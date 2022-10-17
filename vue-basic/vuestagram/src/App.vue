@@ -10,7 +10,7 @@
     </ul>
     <ul class="header-button-right">
       <li v-if="page === 1" @click="page++">Next</li>
-      <li v-if="page === 2" @click="publish" @sendTextArea="updatePostText">발행</li>
+      <li v-if="page === 2" @click="publish" @sendTextArea="updatePostText($event)">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -103,7 +103,7 @@ export default {
       this.page = 0;
     },
     updatePostText(text){
-      console.log(text)
+      console.log(`updatePostText : ${text}`)
       this.postText = text
       this.publish(this.postText);
     }
