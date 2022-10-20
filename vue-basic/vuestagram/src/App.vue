@@ -14,8 +14,12 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postings="postings" :page="page" :imgUrl="imgUrl"
-    @sendTextArea="postText = $event" />
+  <Container
+    :postings="postings"
+    :page="page"
+    :imgUrl="imgUrl"
+    @sendTextArea="postText = $event"
+  />
   <button @click="more">더보기</button>
 
   <div class="footer">
@@ -58,7 +62,7 @@ export default {
       page: 0,
       imgUrl: "",
       imgBlob: null,
-      postText : "",
+      postText: "",
     };
   },
   methods: {
@@ -101,6 +105,11 @@ export default {
       this.postings.unshift(post);
       this.page = 0;
     },
+  },
+  mounted() {
+    this.emitter.on('filterEvent', (e) => {
+      console.log(e);
+    });
   },
 };
 </script>

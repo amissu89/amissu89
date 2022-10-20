@@ -9,7 +9,13 @@
     <div v-if="page === 1">
       <div class="upload-image" :style="uploadImg"></div>
       <div class="filters">
-        <FilterBox :imgUrl="imgUrl" :filter="filter" v-for="(filter, idx) in filterList" :key="idx"> </FilterBox>
+        <FilterBox :imgUrl="imgUrl" :filter="filter" v-for="(filter, idx) in filterList" :key="idx"> 
+          {{filter}}
+          <!-- <template v-slot:a> {{filter}} </template>
+          <template v-slot:b> yllee </template>
+          <template v-slot:default="tag"> <span>{{tag.msg}}</span> </template>  -->
+          
+        </FilterBox>
       </div>
     </div>
 
