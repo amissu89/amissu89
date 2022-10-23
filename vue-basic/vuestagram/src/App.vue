@@ -19,6 +19,7 @@
     :page="page"
     :imgUrl="imgUrl"
     @sendTextArea="postText = $event"
+    :choosedFilter="choosedFilter"
   />
   <button @click="more">더보기</button>
 
@@ -63,6 +64,7 @@ export default {
       imgUrl: "",
       imgBlob: null,
       postText: "",
+      choosedFilter : "",
     };
   },
   methods: {
@@ -92,6 +94,7 @@ export default {
       this.imgUrl = url;
     },
     publish() {
+      console.log(`choosed filter: ${this.choosedFilter}`)
       const post = {
         name: "yllee",
         userImage: "https://placeimg.com/100/100/arch",
@@ -100,7 +103,7 @@ export default {
         date: "May 15",
         liked: false,
         content: this.postText,
-        filter: "perpetua",
+        filter: this.choosedFilter,
       };
       this.postings.unshift(post);
       this.page = 0;
@@ -109,6 +112,7 @@ export default {
   mounted() {
     this.emitter.on('filterEvent', (e) => {
       console.log(e);
+      this.choosedFilter = e
     });
   },
 };

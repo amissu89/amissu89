@@ -7,29 +7,32 @@
 
     <!-- 필터선택페이지 -->
     <div v-if="page === 1">
-      <div class="upload-image" :style="uploadImg"></div>
+      <div class="upload-image" :style="uploadImg" :class="`${choosedFilter}`"></div>
       <div class="filters">
-        <FilterBox :imgUrl="imgUrl" :filter="filter" v-for="(filter, idx) in filterList" :key="idx"> 
-          {{filter}}
+        <FilterBox
+          :imgUrl="imgUrl"
+          :filter="filter"
+          v-for="(filter, idx) in filterList"
+          :key="idx"
+        >
+          {{ filter }}
           <!-- <template v-slot:a> {{filter}} </template>
           <template v-slot:b> yllee </template>
           <template v-slot:default="tag"> <span>{{tag.msg}}</span> </template>  -->
-          
         </FilterBox>
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="page === 2">
-      <div class="upload-image" :style="uploadImg"></div>
+      <div class="upload-image" :style="uploadImg" :class="`${choosedFilter}`"></div>
       <div class="write">
         <textarea
           class="write-box"
           id="writeText"
           @input="$emit('sendTextArea', $event.target.value)"
         >
-write!</textarea
-        >
+          write!</textarea>
       </div>
     </div>
   </div>
@@ -50,6 +53,7 @@ export default {
     page: Number,
     imgUrl: String,
     postText: String,
+    choosedFilter : String,
   },
   data() {
     return {

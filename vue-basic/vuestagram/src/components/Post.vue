@@ -10,6 +10,7 @@
     <div
       class="post-body"
       :style="{ backgroundImage: `url(${posting.postImage})` }"
+      :class="`${posting.filter}`"
     ></div>
     <div class="post-content">
       <p>{{ posting.likes }} Likes</p>
