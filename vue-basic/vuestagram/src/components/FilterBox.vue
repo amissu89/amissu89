@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${filter} filter-item`" :style="`background-image : url(${imgUrl})`">
+  <div @click="fire" :class="`${filter} filter-item`" :style="`background-image : url(${imgUrl})`">
     <!-- slot으로 부모 -> 자식 데이터 전송법
     1. 자식은 구멍 뚫기
     2. <컴포넌트> 태그 사이에 데이터 넣기 
@@ -14,7 +14,6 @@
     <!--<slot name="a"></slot>
     <slot name="b"></slot> -->
     <!-- <slot :msg= "msg"></slot> -->
-    <button @click="fire">이벤트발사</button>
   </div>
 </template>
 
