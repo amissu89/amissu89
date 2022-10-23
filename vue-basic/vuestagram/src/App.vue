@@ -14,6 +14,14 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
+  <h4>안녕 {{$store.state.name }} {{$store.state.age}}</h4>
+  <!-- 컴포넌트 안에서는 직접 수정하기 금지 -->
+  <button @click="$store.commit('changeName', 'yong')">이름 변경</button>
+  <button @click="$store.commit('addAge')">나이 +1</button>
+  <p>{{$store.state.more}}</p>
+  <button @click="$store.dispatch('getData')">더보기</button>
+  
+
   <Container
     :postings="postings"
     :page="page"
