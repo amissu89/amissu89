@@ -14,12 +14,15 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <h4>안녕 {{$store.state.name }} {{$store.state.age}}</h4>
+  <h4>안녕{{author}} {{name}} {{$store.state.age}} {{age}}</h4>
   <!-- 컴포넌트 안에서는 직접 수정하기 금지 -->
   <button @click="$store.commit('changeName', 'yong')">이름 변경</button>
+  <button @click="changeName('이용림')">이름 변경2</button>
   <button @click="$store.commit('addAge')">나이 +1</button>
   <p>{{$store.state.more}}</p>
   <button @click="$store.dispatch('getData')">더보기</button>
+  <p>{{now2}} {{counter}}</p>
+  <button @click="counter++">counter</button>  
   
 
   <Container
@@ -55,9 +58,10 @@
 </template>
 
 <script>
-import Container from "./components/Container.vue";
-import Postings from "./postings.js";
-import axios from "axios";
+import Container from "./components/Container.vue"
+import Postings from "./postings.js"
+import axios from "axios"
+import {mapMutations, mapState} from 'vuex'
 
 export default {
   name: "App",
@@ -73,9 +77,14 @@ export default {
       imgBlob: null,
       postText: "",
       choosedFilter : "",
+      counter : 0,
     };
   },
   methods: {
+    ...mapMutations(['changeName']),
+    now() {
+      return new Date()
+    },
     more() {
       axios
         .get(`https://codingapple1.github.io/vue/more${this.cnt}.json`)
@@ -123,6 +132,20 @@ export default {
       this.choosedFilter = e
     });
   },
+  //computed : 사용해도 실행되지 않는다. 처음 실행하고 값을 간직함
+  //위에서 콜 할 때, now2()로 콜하지 말고 now2로 콜할 것.
+  //데이터 계산 결과 저장소
+  //항상 리턴이 있어야함. 계산 결과를 리턴해야하기 때문.
+  computed : {
+   now2() {
+    return new Date()
+   },
+   name(){
+    return this.$store.state.name
+   },
+   ...mapState(['age', 'clicked']),
+   ...mapState({author : 'age'})
+  }
 };
 </script>
 
