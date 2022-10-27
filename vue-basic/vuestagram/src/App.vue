@@ -14,15 +14,15 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <h4>안녕{{author}} {{name}} {{$store.state.age}} {{age}}</h4>
-  <!-- 컴포넌트 안에서는 직접 수정하기 금지 -->
+  <!-- <h4>안녕{{author}} {{name}} {{$store.state.age}} {{age}}</h4>
+  컴포넌트 안에서는 직접 수정하기 금지
   <button @click="$store.commit('changeName', 'yong')">이름 변경</button>
   <button @click="changeName('이용림')">이름 변경2</button>
   <button @click="$store.commit('addAge')">나이 +1</button>
   <p>{{$store.state.more}}</p>
   <button @click="$store.dispatch('getData')">더보기</button>
   <p>{{now2}} {{counter}}</p>
-  <button @click="counter++">counter</button>  
+  <button @click="counter++">counter</button>   -->
   
 
   <Container
@@ -72,7 +72,7 @@ export default {
     return {
       postings: Postings,
       cnt: 0,
-      page: 0,
+      page: 3,
       imgUrl: "",
       imgBlob: null,
       postText: "",
