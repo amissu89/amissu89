@@ -35,18 +35,24 @@
           write!</textarea>
       </div>
     </div>
+
+    <div v-if="page === 3">
+      <MyPage :one="1" :two="2"/>
+    </div>
   </div>
 </template>
 
 <script>
 import Post from "./Post.vue";
 import FilterBox from "./FilterBox.vue";
+import MyPage from './MyPage.vue'
 
 export default {
   name: "post",
   components: {
     Post: Post,
     FilterBox: FilterBox,
+    MyPage : MyPage,
   },
   props: {
     postings: Array,
