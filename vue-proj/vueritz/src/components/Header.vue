@@ -22,12 +22,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name : "Header",
+};
 </script>
 
 <style>
 header {
-  height: 14vh;
+  height: 15vh;
+  width : 100%;
 }
 
 .logo {

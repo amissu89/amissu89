@@ -1,18 +1,23 @@
 <template>
-  <Header/>
-  <NavMenu/>
+  <div id="container">
+    <Header/>
+    <NavMenu/>
+    <Content/>
+  </div>
+  
   
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import NavMenu from './components/NavMenu.vue'
-
+import Content from './components/Content.vue'
 export default {
   name: "App",
   components: {
     Header : Header,
     NavMenu : NavMenu,
+    Content : Content,
   },
 };
 </script>
