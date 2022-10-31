@@ -1,7 +1,7 @@
 <template>
   <nav class="flex-menu-container">
       <div class="flex-menu-item">
-        <p>About</p>
+        <p class="menu">About</p>
         <div class="category">
             <ul>
                 <li>Direct Trade</li>
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="flex-menu-item">
-        <p>Shop</p>
+        <p class="menu">Shop</p>
         <div class="category">
             <ul>
                 <li>Coffee</li>
@@ -20,10 +20,10 @@
         </div>
       </div>
       <div class="flex-menu-item">
-        <p>Coffee Club</p>
+        <p class="menu">Coffee Club</p>
       </div>
       <div class="flex-menu-item">
-        <p>Whole Sale</p>
+        <p class="menu">Whole Sale</p>
         <div class="category">
             <ul>
                 <li>Shop</li>
@@ -35,10 +35,10 @@
         </div>
       </div>
       <div class="flex-menu-item">
-        <p>Education</p>
+        <p class="menu">Education</p>
       </div>
       <div class="flex-menu-item">
-        <p>Contact</p>
+        <p class="menu">Contact</p>
       </div>
   </nav>
 </template>
@@ -46,19 +46,33 @@
 <script>
 export default {
     name : "NavMenu",
+    mounted() {
+      
+      const wrap = document.querySelector('.flex-menu-container')
+      wrap.addEventListener('click', e =>{
+        const targetEl = e.target
+
+        if(!targetEl.classList.contains('menu')) return
+        
+        const submenu = targetEl.nextElementSibling
+        if(submenu == null) return
+
+        submenu.classList.toggle('category')
+      })
+      
+    },
     data() {
         return {
 
         }
     }
-
 }
 </script>
 
 <style>
 .flex-menu-container{
     height : 85vh;
-    width : 10vw;
+    width : 20vw;
     float:left;
     display: flex;
     justify-content:start;
@@ -68,7 +82,7 @@ export default {
 }
 
 .flex-menu-item{
-    width:8vw;
+    width:18vw;
     text-align: left;
     padding:5px 0 5px 20px;
 }
@@ -82,4 +96,5 @@ export default {
 .category{
     display: none;
 }
+
 </style>
