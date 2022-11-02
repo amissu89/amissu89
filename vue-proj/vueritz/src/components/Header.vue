@@ -2,7 +2,9 @@
   <header>
     <div class="flex-container">
       <div class="flex-item">
-        <img class="logo" alt="vuelitz logo" src="../assets/img/logo.jpg" />
+        <router-link to="/home">
+          <img class="logo" alt="vuelitz logo" src="../assets/img/logo.jpg">
+        </router-link>
       </div>
       <div class="flex-item" style="flex-grow: 3"></div>
       <div class="flex-item">

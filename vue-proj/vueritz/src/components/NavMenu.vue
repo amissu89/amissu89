@@ -4,8 +4,12 @@
         <p class="menu">About</p>
         <div class="category">
             <ul>
-                <li>Direct Trade</li>
-                <li>Team Member</li>
+                <li>
+                  <router-link to="/about/direct-trade">Direct Trade</router-link>
+                </li>
+                <li>
+                  <router-link to="/about/team-member">Team Member</router-link>
+                </li>
             </ul>
         </div>
       </div>
@@ -13,20 +17,27 @@
         <p class="menu">Shop</p>
         <div class="category">
             <ul>
-                <li>Coffee</li>
-                <li>Goods</li>
-                <li>Gifts</li>
+                <li>
+                  <router-link to="/shop/coffee">Coffee</router-link>
+                </li>
+                <li>
+                  <router-link to="/shop/goods">Goods</router-link>
+                </li>
+                <li>
+                  <router-link to="/shop/gifts">Gifts</router-link>
+                </li>
             </ul>
         </div>
       </div>
       <div class="flex-menu-item">
-        <p class="menu">Coffee Club</p>
+        <p class="menu">
+          <router-link to="/coffee-club">Coffee Club</router-link>
+        </p>
       </div>
       <div class="flex-menu-item">
         <p class="menu">Whole Sale</p>
         <div class="category">
             <ul>
-                <li>Shop</li>
                 <li>About Blend</li>
                 <li>Sample | 샘플신청</li>
                 <li>Notice / Q&A</li>
@@ -87,7 +98,6 @@ export default {
     padding:5px 0 5px 20px;
 }
 
-
 .flex-menu-item p{
    font-weight: bolder; 
    cursor: pointer;
@@ -95,6 +105,10 @@ export default {
 
 .category{
     display: none;
+}
+
+.flex-menu-item ul{
+  list-style-type: square;
 }
 
 </style>
