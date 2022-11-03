@@ -1,5 +1,5 @@
 <template>
-  <img alt="direct trade map imgage" src="../../assets/img/directtrade.png">
+  <h1>My Page</h1>
 </template>
 
 <script>

@@ -38,18 +38,30 @@
         <p class="menu">Whole Sale</p>
         <div class="category">
             <ul>
-                <li>About Blend</li>
-                <li>Sample | 샘플신청</li>
-                <li>Notice / Q&A</li>
-                <li>Help</li>
+                <li>
+                  <router-link to="/whole-sale/about-blend">About Blend</router-link>
+                </li>
+                <li>
+                  <router-link to="/whole-sale/sample">Sample | 샘플신청</router-link>
+                </li>
+                <li>
+                  <router-link to="/whole-sale/notice">Notice / Q&A</router-link>
+                </li>
+                <li>
+                  <router-link to="/whole-sale/help">Help</router-link>
+                </li>
             </ul>
         </div>
       </div>
       <div class="flex-menu-item">
-        <p class="menu">Education</p>
+        <p class="menu">
+          <router-link to="/education">Education</router-link>
+        </p>
       </div>
       <div class="flex-menu-item">
-        <p class="menu">Contact</p>
+        <p class="menu">
+          <router-link to="/contact">Contact</router-link>
+        </p>
       </div>
   </nav>
 </template>
@@ -109,6 +121,10 @@ export default {
 
 .flex-menu-item ul{
   list-style-type: square;
+}
+
+.flex-menu-item a {
+  text-decoration: none;
 }
 
 </style>

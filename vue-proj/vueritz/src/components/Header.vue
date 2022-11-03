@@ -11,13 +11,19 @@
         <h4>Fritz Company</h4>
       </div>
       <div class="flex-item">
-        <h5>Login</h5>
+        <h5>
+          <router-link to="/private/login">Login</router-link>
+        </h5>
       </div>
       <div class="flex-item">
-        <h5>My Page</h5>
+        <h5>
+          <router-link to="/private/my-page">My Page</router-link>
+        </h5>
       </div>
       <div class="flex-item">
-        <h5>Cart</h5>
+        <h5>
+          <router-link to="/private/cart">Cart</router-link>
+        </h5>
       </div>
     </div>
   </header>
