@@ -72,7 +72,7 @@ export default {
     return {
       postings: Postings,
       cnt: 0,
-      page: 3,
+      page: 0,
       imgUrl: "",
       imgBlob: null,
       postText: "",
