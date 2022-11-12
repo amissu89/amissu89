@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content">
         <router-view></router-view>
     </div>
   
@@ -12,4 +12,8 @@ export default {
 </script>
 
 <style>
+.content{
+  height:85vh;
+  width: 80vw;
+}
 </style>
