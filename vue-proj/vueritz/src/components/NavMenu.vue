@@ -18,7 +18,15 @@
         <div class="category">
             <ul>
                 <li>
-                  <router-link to="/shop/coffee">Coffee</router-link>
+                  <router-link to="/shop/coffee/all">Coffee</router-link>
+                  <ul>
+                    <li>
+                      <router-link to="/shop/coffee/single">Single Origin</router-link>
+                    </li>
+                    <li>
+                      <router-link to="/shop/coffee/blend">Blend</router-link>
+                    </li>
+                  </ul>
                 </li>
                 <li>
                   <router-link to="/shop/goods">Goods</router-link>
@@ -70,7 +78,6 @@
 export default {
     name : "NavMenu",
     mounted() {
-      
       const wrap = document.querySelector('.flex-menu-container')
       wrap.addEventListener('click', e =>{
         const targetEl = e.target
@@ -82,7 +89,6 @@ export default {
 
         submenu.classList.toggle('category')
       })
-      
     },
     data() {
         return {

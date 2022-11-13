@@ -30,12 +30,12 @@ export default {
   },
   methods: {
     openProfile(idx) {
-      this.selectedIdx = idx
-      this.modalShow = true
+      this.selectedIdx = idx;
+      this.modalShow = true;
     },
-    closeModal(){
-      this.modalShow = false
-    }
+    closeModal() {
+      this.modalShow = false;
+    },
   },
 };
 </script>

@@ -42,7 +42,7 @@ const routes = [
     path : "/shop",
     children : [
       {
-        path: "coffee",
+        path: "coffee/:type",
         component: Coffee,
       },
       {
