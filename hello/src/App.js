@@ -199,18 +199,6 @@ class Modal3 extends React.Component{
     }
   }
 
-  componentDidMount(){
-    //컴포넌트 mount시 코드 실행
-  }
-
-  componentDidUpdate(){
-    //컴포넌트 업데이트시 코드 실행
-  }
-
-  componentWillUnmount(){
-    //컴포넌트 unmount시 코드 실행
-  }
-
   render() {
     return (
       <div>
