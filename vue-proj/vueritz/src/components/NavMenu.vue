@@ -101,7 +101,7 @@ export default {
 <style>
 .flex-menu-container{
     height : 85vh;
-    width : 20vw;
+    width : 10vw;
     float:left;
     display: flex;
     justify-content:start;

@@ -1,6 +1,4 @@
 <template>
-  <h1>Team Member</h1>
-
   <div class="black-bg" v-if="modalShow">
     <div class="white-bg" @click="closeModal">
       <img :src="`${Members[selectedIdx].profile}`" alt="profile" />
@@ -52,14 +50,14 @@ export default {
 }
 
 .black-bg {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   padding: 20px;
 }
 .white-bg {
-  width: 100%;
+  width: 70%;
   background: white;
   border-radius: 8px;
   padding: 20px;

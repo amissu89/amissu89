@@ -14,6 +14,6 @@ export default {
 <style>
 .content{
   height:85vh;
-  width: 80vw;
+  width: 90vw;
 }
 </style>

@@ -3,7 +3,6 @@
   <div class="list">
     <div class="item" v-for="(coffee, idx) in filtered" :key="idx">
       <img :alt="`${coffee.title}`" src="../../assets/img/coffee/decaffein.jpeg">
-      ../../assets{{coffee.image}}
     </div>
   </div>
 </template>
@@ -29,17 +28,17 @@ export default {
   methods: {
     makeFilteredList(type) {
       if (type === "all") {
-        this.filtered = [...Coffees];
+        this.filtered = [...Coffees]
       } else if (type === "single") {
         this.filtered = this.Coffees.filter(
           (coffee) => coffee.category === "single"
-        );
+        )
       } else {
         this.filtered = this.Coffees.filter(
           (coffee) => coffee.category === "blend"
-        );
+        )
       }
-      this.type = type;
+      this.type = type
     },
   },
 };

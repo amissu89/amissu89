@@ -8,7 +8,7 @@
       </div>
       <div class="flex-item" style="flex-grow: 3"></div>
       <div class="flex-item">
-        <h4>Fritz Company</h4>
+        <h4>Vueritz Company</h4>
       </div>
       <div class="flex-item">
         <h5>
@@ -44,6 +44,7 @@ header {
 .logo {
   width: 80px;
   height: 80px;
+  margin-top:10px;
 }
 
 .flex-container {
@@ -54,8 +55,8 @@ header {
 }
 
 .flex-item {
-  width: 100px;
-  height: 100px;
-  padding: 10px 0 10px 0;
+  width: 80px;
+  height: 80px;
+  padding: 1em;
 }
 </style>
