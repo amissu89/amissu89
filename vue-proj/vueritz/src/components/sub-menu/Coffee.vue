@@ -2,7 +2,9 @@
   <h1>Coffee</h1>
   <div class="list">
     <div class="item" v-for="(coffee, idx) in filtered" :key="idx">
-      <img :alt="`${coffee.title}`" src="../../assets/img/coffee/decaffein.jpeg">
+      <h1> {{ coffee.title }}</h1>
+      <h1> {{ coffee.price }}</h1>
+      <img :alt="coffee.title" :src="coffee.image">
     </div>
   </div>
 </template>
@@ -57,7 +59,7 @@ export default {
   border: 1px brown solid;
 }
 
-.imem img{
+.item img{
   width : 100px;
   height: 100px;
 }

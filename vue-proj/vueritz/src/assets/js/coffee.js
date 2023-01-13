@@ -13,8 +13,8 @@ export default [
             "Flavor Notes : 초콜릿, 건무화과, 호두, 당밀의 긴 여운",
             "Chocolate, Dried fig, Walnut, Molasses notes finish",
         ],
-        image: "/img/coffee/decaffein.jpeg",
-        imageDescription: "/img/coffee/decaffein-description.jpg",
+        image: require("../../assets/img/coffee/decaffein.jpeg"),
+        imageDescription: "../../assets/img/coffee/decaffein-description.jpg",
     },
     {
         title: "[프릳츠] La Cruz de Tarrazú Caturra-Catuaí Black Honey",
@@ -32,8 +32,8 @@ export default [
             "Flavor Notes : 블랙 체리, 건과일, 파파야, 캬라멜 여운이 긴 커피",
             "Black cherry, Dreid fruit, Papaya, Caramel notes finish",
         ],
-        image: "/img/coffee/BlackHoney.jpg",
-        imageDescription: "/img/coffee/BlackHoneye-description.jpg",
+        image: require("../../assets/img/coffee/BlackHoney.jpg"),
+        imageDescription: "../../assets/img/coffee/BlackHoneye-description.jpg",
     },
     {
         title: "[프릳츠] Harley S795 Washed",
@@ -49,8 +49,8 @@ export default [
             "Flavor Notes : 건무화과, 브라운 슈가, 멜론, 호두의 여운",
             "Dried fig, Brown sugar, Melon, Walnut notes finish",
         ],
-        image: "/img/coffee/HarleyWashed.jpg",
-        imageDescription: "/img/coffee/HarleyWashed-description.jpg",
+        image: require("../../assets/img/coffee/HarleyWashed.jpg"),
+        imageDescription: "../../assets/img/coffee/HarleyWashed-description.jpg",
     },
     {
         title: "[프릳츠] Aurora Java Washed",
@@ -68,8 +68,8 @@ export default [
             "Flavor Notes: 루이보스 티, 파파야, 살구, 마카다미아넛의 여운",
             "Rooibos tea, Papaya, Apricot, Macadamianut notes finish",
         ],
-        image: "/img/coffee/JavaWashed.jpg",
-        imageDescription: "/img/coffee/JavaWashed-description.jpg",
+        image: require("../../assets/img/coffee/JavaWashed.jpg"),
+        imageDescription: "../../assets/img/coffee/JavaWashed-description.jpg",
     },
     {
         title: "[프릳츠] Aurora Venecia Natural",
@@ -87,8 +87,8 @@ export default [
             "Flavor Notes: 라즈 베리, 바나나, 참외, 초콜릿",
             "Rasp berry, Banana, Korean melon, Chocolate",
         ],
-        image: "/img/coffee/Venecia.jpg",
-        imageDescription: "/img/coffee/Venecia-description.jpg",
+        image: require("../../assets/img/coffee/Venecia.jpg"),
+        imageDescription: "../../assets/img/coffee/Venecia-description.jpg",
     },
     {
         title: "[프릳츠] 서울 시네마 200g",
@@ -100,7 +100,7 @@ export default [
             "커피는 과일입니다.",
             "<서울시네마>에서는 커피가 가진 고유한 밝은 산미와 깨끗한 단맛을 즐겨주시길.",
         ],
-        image: "/img/coffee/seoulcinema.jpg",
+        image: require("../../assets/img/coffee/seoulcinema.jpg"),
         imageDescription: "/img/coffee/Venecia-description.jpg",
     },
     {
@@ -113,7 +113,7 @@ export default [
             "단맛을 바탕으로 훌륭한 밸런스를 <잘 되어가시나 Everything Good>에서 구현합니다.",
             "길고 달콤한 애프터 테이스트도 더불어.",
         ],
-        image: "/img/coffee/going.jpg",
+        image: require("../../assets/img/coffee/going.jpg"),
         imageDescription: "/img/coffee/going-description.jpg",
     },
     {
@@ -125,7 +125,7 @@ export default [
         description2: [
             "달콤 쌉싸름한 향미와 묵직한 바디를 즐길 수 있는 <올드독 Old dog>에서는 한 샷으로도 풍부한 풍미를.",
         ],
-        image: "/img/coffee/olddog.jpg",
+        image: require("../../assets/img/coffee/olddog.jpg"),
         imageDescription: "/img/coffee/olddog-description.jpg",
     }
 ]
