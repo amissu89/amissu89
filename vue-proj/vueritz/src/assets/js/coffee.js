@@ -1,5 +1,6 @@
 export default [
     {
+        id:0,
         title: "[프릳츠] 디카페인 Decaffeinated 200g",
         price: 16000,
         category: "single",
@@ -17,6 +18,7 @@ export default [
         imageDescription: "../../assets/img/coffee/decaffein-description.jpg",
     },
     {
+        id:1,
         title: "[프릳츠] La Cruz de Tarrazú Caturra-Catuaí Black Honey",
         price: 16000,
         category: "single",
@@ -36,6 +38,7 @@ export default [
         imageDescription: "../../assets/img/coffee/BlackHoneye-description.jpg",
     },
     {
+        id:2,
         title: "[프릳츠] Harley S795 Washed",
         price: 16000,
         category: "single",
@@ -53,6 +56,7 @@ export default [
         imageDescription: "../../assets/img/coffee/HarleyWashed-description.jpg",
     },
     {
+        id:3,
         title: "[프릳츠] Aurora Java Washed",
         price: 18000,
         category: "single",
@@ -72,6 +76,7 @@ export default [
         imageDescription: "../../assets/img/coffee/JavaWashed-description.jpg",
     },
     {
+        id:4,
         title: "[프릳츠] Aurora Venecia Natural",
         price: 22000,
         category: "single",
@@ -91,6 +96,7 @@ export default [
         imageDescription: "../../assets/img/coffee/Venecia-description.jpg",
     },
     {
+        id:5,
         title: "[프릳츠] 서울 시네마 200g",
         price: 16000,
         category: "blend",
@@ -104,6 +110,7 @@ export default [
         imageDescription: "/img/coffee/Venecia-description.jpg",
     },
     {
+        id:6,
         title: "[프릳츠] 잘 되어가시나 200g",
         price: 16000,
         category: "blend",
@@ -117,6 +124,7 @@ export default [
         imageDescription: "/img/coffee/going-description.jpg",
     },
     {
+        id:7,
         title: "[프릳츠] 올드독 200g",
         price: 16000,
         category: "blend",

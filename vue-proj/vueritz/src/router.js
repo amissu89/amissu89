@@ -15,6 +15,7 @@ import Contact from './components/menu/Contact.vue'
 import Login from './components/private/Login.vue'
 import MyPage from './components/private/MyPage.vue'
 import Cart from './components/private/Cart.vue'
+import Detail from './components/sub-menu/Detail.vue'
 
 const routes = [
   {
@@ -37,6 +38,10 @@ const routes = [
         component: TeamMember,
       },    
     ]
+  },
+  {
+    path:"/detail/:id",
+    component : Detail,
   },
   {
     path : "/shop",

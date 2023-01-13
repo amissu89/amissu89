@@ -1,10 +1,9 @@
 <template>
-  <h1>Coffee</h1>
   <div class="list">
-    <div class="item" v-for="(coffee, idx) in filtered" :key="idx">
-      <h1> {{ coffee.title }}</h1>
-      <h1> {{ coffee.price }}</h1>
+    <div class="item" v-for="(coffee, idx) in filtered" :key="idx" @click="$router.push(`/detail/${coffee.id}`)">
       <img :alt="coffee.title" :src="coffee.image">
+      <p> {{ coffee.title }}</p>
+      <p> {{ coffee.price }}</p>
     </div>
   </div>
 </template>
@@ -48,19 +47,16 @@ export default {
 
 <style>
 .list {
-  width: 100%;
-  height: 100%;
   display: grid;
-  grid-template-columns: (3, 1fr);
+  grid-template-columns : repeat(3, 1fr);
+  grid-template-rows : repeat(3, 1fr);
 }
 
 .item {
   padding: 10px;
-  border: 1px brown solid;
 }
 
 .item img{
-  width : 100px;
-  height: 100px;
+  width : 315px;
 }
 </style>
