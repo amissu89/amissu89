@@ -15,7 +15,7 @@ export default [
             "Chocolate, Dried fig, Walnut, Molasses notes finish",
         ],
         image: require("../../assets/img/coffee/decaffein.jpeg"),
-        imageDescription: "../../assets/img/coffee/decaffein-description.jpg",
+        imageDescription: require("../../assets/img/coffee/decaffein-description.jpg"),
     },
     {
         id:1,
@@ -35,7 +35,7 @@ export default [
             "Black cherry, Dreid fruit, Papaya, Caramel notes finish",
         ],
         image: require("../../assets/img/coffee/BlackHoney.jpg"),
-        imageDescription: "../../assets/img/coffee/BlackHoneye-description.jpg",
+        imageDescription: require("../../assets/img/coffee/BlackHoney-description.jpg"),
     },
     {
         id:2,
@@ -53,7 +53,7 @@ export default [
             "Dried fig, Brown sugar, Melon, Walnut notes finish",
         ],
         image: require("../../assets/img/coffee/HarleyWashed.jpg"),
-        imageDescription: "../../assets/img/coffee/HarleyWashed-description.jpg",
+        imageDescription: require("../../assets/img/coffee/HarleyWashed-description.jpg"),
     },
     {
         id:3,
@@ -73,7 +73,7 @@ export default [
             "Rooibos tea, Papaya, Apricot, Macadamianut notes finish",
         ],
         image: require("../../assets/img/coffee/JavaWashed.jpg"),
-        imageDescription: "../../assets/img/coffee/JavaWashed-description.jpg",
+        imageDescription: require("../../assets/img/coffee/JavaWashed-description.jpg"),
     },
     {
         id:4,
@@ -93,7 +93,7 @@ export default [
             "Rasp berry, Banana, Korean melon, Chocolate",
         ],
         image: require("../../assets/img/coffee/Venecia.jpg"),
-        imageDescription: "../../assets/img/coffee/Venecia-description.jpg",
+        imageDescription: require("../../assets/img/coffee/Venecia-description.jpg"),
     },
     {
         id:5,
@@ -107,7 +107,7 @@ export default [
             "<서울시네마>에서는 커피가 가진 고유한 밝은 산미와 깨끗한 단맛을 즐겨주시길.",
         ],
         image: require("../../assets/img/coffee/seoulcinema.jpg"),
-        imageDescription: "/img/coffee/Venecia-description.jpg",
+        imageDescription: require("../../assets/img/coffee/seoulcinema-description.png"),
     },
     {
         id:6,
@@ -121,7 +121,7 @@ export default [
             "길고 달콤한 애프터 테이스트도 더불어.",
         ],
         image: require("../../assets/img/coffee/going.jpg"),
-        imageDescription: "/img/coffee/going-description.jpg",
+        imageDescription: require("../../assets/img/coffee/going-description.png"),
     },
     {
         id:7,
@@ -134,6 +134,6 @@ export default [
             "달콤 쌉싸름한 향미와 묵직한 바디를 즐길 수 있는 <올드독 Old dog>에서는 한 샷으로도 풍부한 풍미를.",
         ],
         image: require("../../assets/img/coffee/olddog.jpg"),
-        imageDescription: "/img/coffee/olddog-description.jpg",
+        imageDescription: require("../../assets/img/coffee/olddog-description.png"),
     }
 ]
